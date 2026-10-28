@@ -5,45 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RRR Servicio Tecnico</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
 </head>
+
 <body>
-    <header>
-        <h1>Servicio Técnico Especializado</h1>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="contacto.html">Contacto</a>
-        </nav>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico">
+                <span class="gradient-text">Servicio Técnico RRR</span>
+            </a>
+            <nav>
+                <ul class="nav-main">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="accesorios.html">Accesorios</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
     <main>
-        <section>
-            <h2>Bienvenido a RRR Servicio Técnico</h2>
-            <p>Ofrecemos soluciones rápidas y efectivas para todos tus problemas técnicos. Nuestro equipo de expertos está listo para ayudarte con cualquier dispositivo o sistema.</p>
+        <section class="hero">
+            <div class="container">
+                <h1 class="gradient-text">Servicio Técnico Especializado</h1>
+                <p class="hero-subtitle">Soluciones rápidas y efectivas para tus equipos, con garantía. <br>
+                    Ofrecemos soluciones rápidas y efectivas para tus problemas técnicos. <br>
+                    Un equipo de expertos dispuesto a cualquier desafio.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://wa.me/56975530368?text=Hola,%20necesito%20servicio%20técnico"
+                        class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> Solicitar diagnóstico
+                    </a>
+                    <a href="#servicios" class="btn btn-primary">Ver servicios</a>
+                </div>
+            </div>
         </section>
 
         <section>
-            <h2>Nuestros Servicios</h2>
-            <ul>
-                <li>Reparación de computadoras y laptops</li>
-                <li>Mantenimiento de celulares y notebooks</li>
-                <li>Instalación de laminas de vidrio e hidrogel</li>
-                <li>Instalación de Office</li>
-            </ul>
-        </section>
+            <section class="section" id="servicios">
+    <div class="container">
+        <header class="section-header">
+            <h2 class="gradient-text">Nuestros Servicios</h2>
+            <p>Soluciones para todos tus equipos</p>
+        </header>
 
-        <section>
-            <h2>Contacto</h2>
-            <p>Para más información o para solicitar un servicio, contáctanos a través de nuestro formulario en la página de contacto.</p>
+        <div class="servicios-grid">
+            <article class="servicio-card">
+                <div class="servicio-icon"><i class="fas fa-desktop"></i></div>
+                <h3>Computadoras y Laptops</h3>
+                <p>Diagnóstico, reparación y mantenimiento.</p>
+                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20reparación%20de%20computador"
+                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
+            </article>
+
+            <article class="servicio-card">
+                <div class="servicio-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Dispositivos Móviles</h3>
+                <p>Mantenimiento y reparación de equipos móviles.</p>
+                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20reparación%20de%20celular"
+                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
+            </article>
+
+            <article class="servicio-card">
+                <div class="servicio-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Láminas de vidrio e hidrogel</h3>
+                <p>Protege la pantalla de tu equipo con instalación profesional.</p>
+                <a href="https://wa.me/56975530368?text=Hola,%20quiero%20una%20lámina%20para%20mi%20equipo"
+                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
+            </article>
+
+            <article class="servicio-card">
+                <div class="servicio-icon"><i class="fas fa-download"></i></div>
+                <h3>Instalación de Office</h3>
+                <p>Instalación y configuración de programas.</p>
+                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20instalar%20Office"
+                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
+            </article>
+
+            <article class="servicio-card">
+                <div class="servicio-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>Mantención de consolas</h3>
+                <p>Reparación y mantenimiento de consolas de videojuegos.</p>
+                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20ayuda%20con%20mi%20consola"
+                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
+            </article>
+
+            <article class="servicio-card">
+                <div class="servicio-icon"><i class="fas fa-tv"></i></div>
+                <h3>Televisión y Smart TVs</h3>
+                <p>Configuración y solución de problemas de conectividad para televisores inteligentes.</p>
+                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20ayuda%20con%20mi%20televisión"
+                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
+            </article>
+        </div>
+    </div>
+</section>
         </section>
     </main>
-        
-    <footer>
-            <p>Contactanos por WhatsApp: <a href="https://wa.me/1234567890">+56 9 7553 0368</a>
-             <p>&copy; 2024 RRR Servicio Técnico. Todos los derechos reservados.</p>
-            </p>
+    
+    <footer class="footer" id="contacto">
+    <div class="container">
+        <h3 class="gradient-text">Encuéntranos en:</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Galería paseo colonial, local 7, RRR Los Andes</p>
+        <p><i class="fas fa-map-marker-alt"></i>Galería express membrillar 351, local 1, RRR Los Andes</p>
+        <h3 class="gradient-text">Contacta con nosotros</h3>
+          <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 7553 0368</a></p>
+        <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/56928692686?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 2869 2686</a></p>
+        <p><a href="https://www.instagram.com/rrrserviciotecnico?psln=MThzNWk0ZGdvbm0yNQ==" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram de RRR Servicio Técnico"><i class="fab fa-instagram"></i> @rrrserviciotecnico</a></p>
+        <!-- <p><a href="https://www.facebook.com/rrrserviciotecnico" target="_blank" rel="noopener noreferrer"
+            aria-label="Facebook de RRR Servicio Técnico"><i class="fab fa-facebook"></i> RRR Servicio Técnico</a></p>  facebook pendiente de crear-->
+        <h3 class="gradient-text">Horario de Atención</h3>
+        <p><i class="fas fa-clock"></i> Todos los días: 10:00-20:00</p>
+        <p class="copy">&copy; 2026 Servicio Técnico RRR. Todos los derechos reservados.</p>
+    </div>
     </footer>
 
+    <a href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico"
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <script src="js/main.js"></script>
+
+
 </body>
 </html>
