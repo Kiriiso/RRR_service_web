@@ -42,11 +42,23 @@
     <script>
         const id = new URLSearchParams(window.location.search).get('id');
         const contenedor = document.getElementById('producto-contenedor');
+        const formatearPrecioCLP = (precio) => {
+        // Si ya viene formateado como texto (ej: "$15.990"), lo retorna directo
+            if (typeof precio === 'string') return precio;
+
+            return new Intl.NumberFormat('es-CL', {
+            style: 'currency',
+            currency: 'CLP',
+            maximumFractionDigits: 0
+        }).format(precio);
+    };
         function cambiarImagen(src, miniatura) {
             document.getElementById('imagen-principal').src = src;
             document.querySelectorAll('.miniatura').forEach(m => m.classList.remove('activa'));
             miniatura.classList.add('activa');
         }
+
+        
 
         fetch('data/productos.json')
             .then(res => res.json())
@@ -94,7 +106,7 @@
                         <div class="producto-info">
                             <span class="producto-categoria">${producto.categoria}</span>
                             <h2 class="gradient-text">${producto.nombre}</h2>
-                            <p class="producto-precio">${producto.precio}</p>
+                            <p class="producto-precio">${formatearPrecioCLP(producto.precio)}</p>
                             <p style="color:var(--texto-suave)">${producto.descripcion}</p>
                             <ul>${listaCaracteristicas}</ul>
                             <a href="https://wa.me/56975530368?text=Hola,%20me%20interesa%20el%20producto%20${encodeURIComponent(producto.nombre)}"

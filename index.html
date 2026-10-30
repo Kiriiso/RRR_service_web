@@ -1,188 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-CL">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRR Servicio Tecnico</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-    #pantalla-carga {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #0a0d14;
-        z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RRR Servicio Técnico | Reparación de computadores, celulares y consolas en Los Andes</title>
+<meta name="description" content="Servicio técnico en Los Andes: computadores, notebooks, celulares, consolas y Smart TVs. Diagnóstico claro, reparación con garantía y atención por WhatsApp.">
+<meta name="theme-color" content="#0b0e14">
+<link rel="icon" href="img/logorrr.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#0b0e14; --bench:#121722; --bench-2:#171d2b; --line:rgba(255,255,255,.09);
+  --text:#e9edf5; --muted:#98a2b8;
+  --r:#ff4d5e; --g:#34f0a0; --b:#4d94ff;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--text);font:400 1.05rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--b);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.02em}
+.rgb-text{background:linear-gradient(90deg,var(--r),var(--g),var(--b),var(--r));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 8s linear infinite}
+@keyframes flow{to{background-position:250% 0}}
 
-    #pantalla-carga.oculta {
-        opacity: 0;
-        visibility: hidden;
-    }
+/* Pantalla de carga */
+#pantalla-carga{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:9999;transition:opacity .5s,visibility .5s}
+#pantalla-carga.oculta{opacity:0;visibility:hidden}
+#pantalla-carga img{width:132px;border-radius:50%;animation:rebote 1s infinite}
+@keyframes rebote{50%{transform:translateY(-18px)}}
 
-    #pantalla-carga img {
-        width: 128px;
-        border-radius: 50%;
-        animation: rebote 1s infinite;
-    }
+/* Borde RGB de marca alrededor de la barra superior */
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes girar{to{--angle:360deg}}
+header.top{position:sticky;top:0;z-index:50;background:rgba(11,14,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--r),var(--g),var(--b));opacity:.8}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:.7rem;font:700 1.15rem var(--display)}
+.brand img{width:40px;height:40px;border-radius:50%;padding:2px;background:conic-gradient(from var(--angle),var(--r),var(--g),var(--b),var(--r));animation:girar 4s linear infinite}
+.menu{display:flex;gap:.4rem;list-style:none}
+.menu a{padding:.5rem .9rem;border-radius:999px;color:var(--muted);font-weight:500;transition:.2s}
+.menu a:hover{color:var(--text);background:var(--bench-2)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:12px;font-size:1.1rem;cursor:pointer}
 
-    @media (min-width: 768px) {
-        #pantalla-carga img {
-            width: 192px;
-        }
-    }
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:14px;font-weight:600;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:#25d366;color:#04230f;box-shadow:0 8px 24px -8px rgba(37,211,102,.6)}
+.btn-ghost{border-color:var(--line);background:var(--bench)}
+.btn-ghost:hover{border-color:var(--b)}
 
-    @keyframes rebote {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
+/* Hero: una orden de trabajo en vivo */
+.hero{position:relative;padding:5rem 0 4rem;background:
+  radial-gradient(700px 380px at 85% 10%,rgba(77,148,255,.16),transparent 70%),
+  radial-gradient(600px 340px at 0% 90%,rgba(255,77,94,.12),transparent 70%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(#000,transparent 85%);opacity:.5;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem);font-weight:800}
+.hero p.lead{margin:1.4rem 0 2rem;color:var(--muted);max-width:52ch;font-size:1.15rem}
+.hero .actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.estado{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.4rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--bench);font-size:.92rem;color:var(--muted)}
+.estado i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.estado.abierto i{background:var(--g);box-shadow:0 0 10px var(--g)}
+.estado.cerrado i{background:var(--r)}
+
+.orden{background:var(--bench);border:1px solid var(--line);border-radius:20px;padding:1.5rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);transform:rotate(1.6deg)}
+.orden-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px dashed var(--line);margin-bottom:1.1rem}
+.orden-head strong{font:700 1.05rem var(--display)}
+.leds{display:flex;gap:.5rem}
+.led{width:12px;height:12px;border-radius:50%;background:#2a3142;transition:.4s}
+.led.on.r{background:var(--r);box-shadow:0 0 12px var(--r)}
+.led.on.b{background:var(--b);box-shadow:0 0 12px var(--b)}
+.led.on.g{background:var(--g);box-shadow:0 0 12px var(--g)}
+.pasos{list-style:none;display:grid;gap:.85rem}
+.pasos li{display:flex;gap:.8rem;align-items:center;color:var(--muted);transition:color .4s}
+.pasos li i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;border:1px solid var(--line);transition:.4s}
+.pasos li.hecho{color:var(--text)}
+.pasos li.hecho i{background:var(--g);color:#04281a;border-color:var(--g)}
+.orden-foot{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--line);font-size:.92rem;color:var(--muted)}
+
+/* Secciones */
+section.s{padding:5rem 0}
+.s-head{max-width:640px;margin-bottom:2.8rem}
+.s-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.s-head p{color:var(--muted);margin-top:.8rem}
+
+/* Servicios: panel de herramientas, la tarjeta principal es más grande */
+.bench{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.srv{position:relative;grid-column:span 2;display:flex;flex-direction:column;gap:.7rem;padding:1.6rem;border-radius:18px;background:var(--bench);border:1px solid var(--line);overflow:hidden;transition:border-color .25s,transform .25s}
+.srv::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(77,148,255,.18),transparent 70%);opacity:0;transition:opacity .3s}
+.srv:hover{border-color:rgba(255,255,255,.22);transform:translateY(-3px)}
+.srv:hover::before{opacity:1}
+.srv>*{position:relative}
+.srv .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.2rem;background:var(--bench-2)}
+.srv h3{font-size:1.3rem}
+.srv p{color:var(--muted);font-size:.98rem;flex:1}
+.srv .ask{font-weight:600;color:var(--g);display:inline-flex;gap:.5rem;align-items:center}
+.srv .ask i{transition:transform .2s}
+.srv:hover .ask i{transform:translateX(4px)}
+.srv.big{grid-column:span 4;grid-row:span 1;background:linear-gradient(135deg,var(--bench),#14213a)}
+.srv.big h3{font-size:1.8rem}
+.srv:nth-child(2) .ico{color:var(--b)}.srv:nth-child(3) .ico{color:var(--g)}.srv:nth-child(1) .ico{color:var(--r)}
+.srv:nth-child(4) .ico{color:var(--b)}.srv:nth-child(5) .ico{color:var(--r)}.srv:nth-child(6) .ico{color:var(--g)}
+
+/* Cómo trabajamos (aquí sí es una secuencia) */
+.how{background:var(--bench);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:p;list-style:none}
+.steps li{counter-increment:p;position:relative;padding-top:3.2rem}
+.steps li::before{content:counter(p);position:absolute;top:0;left:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 1.1rem var(--display);background:var(--bg);border:2px solid var(--b)}
+.steps li:not(:last-child)::after{content:"";position:absolute;top:19px;left:52px;right:-1rem;height:2px;background:linear-gradient(90deg,var(--b),transparent)}
+.steps h3{font-size:1.15rem;margin-bottom:.4rem}
+.steps p{color:var(--muted);font-size:.97rem}
+
+/* Locales */
+.locales{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.local{padding:1.6rem;border-radius:18px;border:1px solid var(--line);background:var(--bench)}
+.local h3{font-size:1.2rem;margin-bottom:.4rem}
+.local p{color:var(--muted)}
+.local a{display:inline-flex;gap:.5rem;align-items:center;margin-top:1rem;font-weight:600;color:var(--b)}
+.horario{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.horario div{padding:1.1rem 1.3rem;border:1px solid var(--line);border-radius:14px;background:var(--bench)}
+.horario b{display:block;font-family:var(--display);font-size:1.05rem}
+.horario span{color:var(--muted);font-size:.95rem}
+
+/* CTA + pie */
+.cta{text-align:center;padding:5rem 0}
+.cta h2{font-size:clamp(1.9rem,4vw,3rem);max-width:18ch;margin:0 auto 1.6rem}
+footer{border-top:1px solid var(--line);padding:2.2rem 0;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+footer a:hover{color:var(--text)}
+.wa-float{position:fixed;right:1.2rem;bottom:1.2rem;z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#04230f;font-size:1.8rem;box-shadow:0 10px 30px -6px rgba(37,211,102,.7);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .orden{transform:none}
+  .bench{grid-template-columns:repeat(2,1fr)}
+  .srv,.srv.big{grid-column:span 1}
+  .srv.big{grid-column:span 2}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li::after{display:none}
+  .locales,.horario{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .burger{display:block}
+  .menu{position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:.8rem 1.25rem 1.2rem;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  .menu.abierto{display:flex}
+  .bench,.steps{grid-template-columns:1fr}
+  .srv.big{grid-column:span 1}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
-    
 <body>
-    <div id="pantalla-carga">
-        <img src="img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico">
-    </div>
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico">
-                <span class="gradient-text">Servicio Técnico RRR</span>
-            </a>
-            <nav>
-                <ul class="nav-main">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="catalogo.html">Accesorios</a></li>
-                    <li><a href="index.html#servicios">Servicios</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
-                </ul>
-            </nav>
+
+<div id="pantalla-carga"><img src="img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    <ul class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html">Accesorios</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="estado" id="estado"><i></i><span>Revisando horario…</span></div>
+        <h1>Tu equipo en manos <span class="rgb-text">que sí lo arreglan</span></h1>
+        <p class="lead">Reparamos computadores, celulares, consolas y Smart TVs en Los Andes. Te explicamos qué falla, cuánto cuesta y cuánto demora, antes de tocar nada. Todo con garantía.</p>
+        <div class="actions">
+          <a class="btn btn-wa" href="https://wa.me/56975530368?text=Hola,%20necesito%20servicio%20técnico" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Solicitar diagnóstico</a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
         </div>
-    </header>
-    
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1 class="gradient-text">Servicio Técnico Especializado</h1>
-                <p class="hero-subtitle">Soluciones rápidas y efectivas para tus equipos, con garantía. <br>
-                    Ofrecemos soluciones rápidas y efectivas para tus problemas técnicos. <br>
-                    Un equipo de expertos dispuesto a cualquier desafio.
-                </p>
-                <div class="hero-actions">
-                    <a href="https://wa.me/56975530368?text=Hola,%20necesito%20servicio%20técnico"
-                        class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-whatsapp"></i> Solicitar diagnóstico
-                    </a>
-                    <a href="#servicios" class="btn btn-primary">Ver servicios</a>
-                </div>
-            </div>
-        </section>
+      </div>
 
-        <section>
-            <section class="section" id="servicios">
-    <div class="container">
-        <header class="section-header">
-            <h2 class="gradient-text">Nuestros Servicios</h2>
-            <p>Soluciones para todos tus equipos</p>
-        </header>
-
-        <div class="servicios-grid">
-            <article class="servicio-card">
-                <div class="servicio-icon"><i class="fas fa-desktop"></i></div>
-                <h3>Computadoras y Laptops</h3>
-                <p>Diagnóstico, reparación y mantenimiento.</p>
-                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20reparación%20de%20computador"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
-            </article>
-
-            <article class="servicio-card">
-                <div class="servicio-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Dispositivos Móviles</h3>
-                <p>Mantenimiento y reparación de equipos móviles.</p>
-                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20reparación%20de%20celular"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
-            </article>
-
-            <article class="servicio-card">
-                <div class="servicio-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Láminas de vidrio e hidrogel</h3>
-                <p>Protege la pantalla de tu equipo con instalación profesional.</p>
-                <a href="https://wa.me/56975530368?text=Hola,%20quiero%20una%20lámina%20para%20mi%20equipo"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
-            </article>
-
-            <article class="servicio-card">
-                <div class="servicio-icon"><i class="fas fa-download"></i></div>
-                <h3>Instalación de Office</h3>
-                <p>Instalación y configuración de programas.</p>
-                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20instalar%20Office"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
-            </article>
-
-            <article class="servicio-card">
-                <div class="servicio-icon"><i class="fas fa-gamepad"></i></div>
-                <h3>Mantención de consolas</h3>
-                <p>Reparación y mantenimiento de consolas de videojuegos.</p>
-                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20ayuda%20con%20mi%20consola"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
-            </article>
-
-            <article class="servicio-card">
-                <div class="servicio-icon"><i class="fas fa-tv"></i></div>
-                <h3>Televisión y Smart TVs</h3>
-                <p>Configuración y solución de problemas de conectividad para televisores inteligentes.</p>
-                <a href="https://wa.me/56975530368?text=Hola,%20necesito%20ayuda%20con%20mi%20televisión"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer">Consultar</a>
-            </article>
+      <aside class="orden" aria-label="Ejemplo de cómo avanza tu reparación">
+        <div class="orden-head"><strong>Orden de trabajo</strong>
+          <div class="leds" aria-hidden="true"><span class="led r"></span><span class="led b"></span><span class="led g"></span></div>
         </div>
+        <ul class="pasos">
+          <li><i class="fas fa-check"></i> Recibimos tu equipo</li>
+          <li><i class="fas fa-check"></i> Diagnóstico y presupuesto</li>
+          <li><i class="fas fa-check"></i> Reparación</li>
+          <li><i class="fas fa-check"></i> Listo para retirar</li>
+        </ul>
+        <p class="orden-foot">Te avisamos por WhatsApp en cada paso.</p>
+      </aside>
     </div>
-</section>
-        </section>
-    </main>
-    
-    <footer class="footer" id="contacto">
-    <div class="container">
-        <h3 class="gradient-text">Encuéntranos en:</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Galería paseo colonial, Calle Esmeralda 498, local 7, RRR Los Andes</p>
-        <p><i class="fas fa-map-marker-alt"></i>Galería express membrillar 351, local 1, RRR Los Andes</p>
-        <h3 class="gradient-text">Contacta con nosotros</h3>
-          <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 7553 0368</a></p>
-        <p><i class="fas fa-phone-alt"></i> <a href="https://wa.me/56928692686?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 2869 2686</a></p>
-        <p><a href="https://www.instagram.com/rrrserviciotecnico?psln=MThzNWk0ZGdvbm0yNQ==" target="_blank" rel="noopener noreferrer"
-            aria-label="Instagram de RRR Servicio Técnico"><i class="fab fa-instagram"></i> @rrrserviciotecnico</a></p>
-        <!-- <p><a href="https://www.facebook.com/rrrserviciotecnico" target="_blank" rel="noopener noreferrer"
-            aria-label="Facebook de RRR Servicio Técnico"><i class="fab fa-facebook"></i> RRR Servicio Técnico</a></p>  facebook pendiente de crear-->
-        <h3 class="gradient-text">Horario de Atención</h3>
-        <p><i class="fas fa-clock"></i> De lunes a viernes: 10:00-20:00</p>
-        <p><i class="fas fa-clock"></i> Sábados: 10:00-19:00</p>
-        <p class="copy">&copy; 2026 Servicio Técnico RRR. Todos los derechos reservados.</p>
+  </section>
+
+  <section class="s" id="servicios">
+    <div class="wrap">
+      <div class="s-head">
+        <h2>Qué podemos arreglar por ti</h2>
+        <p>Escríbenos por WhatsApp con el modelo y el problema, y te respondemos con los siguientes pasos.</p>
+      </div>
+      <div class="bench">
+        <article class="srv big">
+          <div class="ico"><i class="fas fa-desktop"></i></div>
+          <h3>Computadores y notebooks</h3>
+          <p>Diagnóstico, reparación y mantenimiento: lentitud, pantallas, baterías, limpieza, formateo y recuperación de equipos que no encienden.</p>
+          <a class="ask" href="https://wa.me/56975530368?text=Hola,%20necesito%20reparación%20de%20computador" target="_blank" rel="noopener noreferrer">Consultar <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="srv">
+          <div class="ico"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Celulares</h3>
+          <p>Mantenimiento y reparación de equipos móviles.</p>
+          <a class="ask" href="https://wa.me/56975530368?text=Hola,%20necesito%20reparación%20de%20celular" target="_blank" rel="noopener noreferrer">Consultar <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="srv">
+          <div class="ico"><i class="fas fa-shield-alt"></i></div>
+          <h3>Láminas de vidrio e hidrogel</h3>
+          <p>Protege la pantalla con instalación profesional.</p>
+          <a class="ask" href="https://wa.me/56975530368?text=Hola,%20quiero%20una%20lámina%20para%20mi%20equipo" target="_blank" rel="noopener noreferrer">Consultar <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="srv">
+          <div class="ico"><i class="fas fa-download"></i></div>
+          <h3>Instalación de Office</h3>
+          <p>Instalación y configuración de programas.</p>
+          <a class="ask" href="https://wa.me/56975530368?text=Hola,%20necesito%20instalar%20Office" target="_blank" rel="noopener noreferrer">Consultar <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="srv">
+          <div class="ico"><i class="fas fa-gamepad"></i></div>
+          <h3>Consolas</h3>
+          <p>Reparación y mantención de consolas de videojuegos.</p>
+          <a class="ask" href="https://wa.me/56975530368?text=Hola,%20necesito%20ayuda%20con%20mi%20consola" target="_blank" rel="noopener noreferrer">Consultar <i class="fas fa-arrow-right"></i></a>
+        </article>
+        <article class="srv">
+          <div class="ico"><i class="fas fa-tv"></i></div>
+          <h3>Televisores y Smart TVs</h3>
+          <p>Configuración y solución de problemas de conexión.</p>
+          <a class="ask" href="https://wa.me/56975530368?text=Hola,%20necesito%20ayuda%20con%20mi%20televisión" target="_blank" rel="noopener noreferrer">Consultar <i class="fas fa-arrow-right"></i></a>
+        </article>
+      </div>
     </div>
-    </footer>
+  </section>
 
-    <a href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico"
-   class="whatsapp-float" target="_blank" rel="noopener noreferrer"
-   aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <script src="js/main.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            const pantalla = document.getElementById('pantalla-carga');
-            pantalla.classList.add('oculta');
-            setTimeout(() => pantalla.remove(), 500);
-        });
+  <section class="s how">
+    <div class="wrap">
+      <div class="s-head"><h2>Así trabajamos</h2></div>
+      <ol class="steps">
+        <li><h3>Nos escribes</h3><p>Cuéntanos el modelo y qué le pasa. Si puedes, manda una foto.</p></li>
+        <li><h3>Revisamos</h3><p>Diagnosticamos el equipo y te damos precio y plazo claros.</p></li>
+        <li><h3>Reparamos</h3><p>Solo avanzamos si tú aceptas el presupuesto.</p></li>
+        <li><h3>Retiras</h3><p>Te avisamos cuando esté listo. Incluye garantía.</p></li>
+      </ol>
+    </div>
+  </section>
 
-        // Respaldo: oculta la pantalla de carga aunque algún recurso tarde demasiado
-        setTimeout(() => {
-            const pantalla = document.getElementById('pantalla-carga');
-            if (pantalla) pantalla.classList.add('oculta');
-        }, 5000);
+  <section class="s" id="contacto">
+    <div class="wrap">
+      <div class="s-head"><h2>Dónde encontrarnos</h2><p>Dos locales en Los Andes.</p></div>
+      <div class="locales">
+        <div class="local"><h3>Galería Paseo Colonial</h3><p>Calle Esmeralda 498, local 7, Los Andes</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Galer%C3%ADa+Paseo+Colonial+Esmeralda+498+Los+Andes" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-dot"></i> Cómo llegar</a></div>
+        <div class="local"><h3>Galería Express Membrillar</h3><p>Membrillar 351, local 1, Los Andes</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Galer%C3%ADa+Express+Membrillar+351+Los+Andes" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-dot"></i> Cómo llegar</a></div>
+      </div>
+      <div class="horario">
+        <div><b>Lunes a viernes</b><span>10:00 a 20:00</span></div>
+        <div><b>Sábados</b><span>10:00 a 19:00</span></div>
+        <div><b>Domingos</b><span>Cerrado</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>¿Tu equipo falló? <span class="rgb-text">Escríbenos ahora</span></h2>
+      <a class="btn btn-wa" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Hablar por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="anio">2026</span> Servicio Técnico RRR. Todos los derechos reservados.</span>
+    <span>
+      <a href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 7553 0368</a> ·
+      <a href="https://wa.me/56928692686?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 2869 2686</a> ·
+      <a href="https://www.instagram.com/rrrserviciotecnico" target="_blank" rel="noopener noreferrer" aria-label="Instagram de RRR Servicio Técnico"><i class="fab fa-instagram"></i> @rrrserviciotecnico</a>
+    </span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+// Pantalla de carga (con respaldo a los 5 s)
+const carga = document.getElementById('pantalla-carga');
+window.addEventListener('load', () => { carga.classList.add('oculta'); setTimeout(() => carga.remove(), 500); });
+setTimeout(() => carga && carga.classList.add('oculta'), 5000);
+
+// Menú móvil
+const burger = document.querySelector('.burger'), menu = document.querySelector('.menu');
+burger.addEventListener('click', () => {
+  const abierto = menu.classList.toggle('abierto');
+  burger.setAttribute('aria-expanded', abierto);
+});
+menu.addEventListener('click', e => { if (e.target.tagName === 'A') menu.classList.remove('abierto'); });
+
+// Luz que sigue al mouse en las tarjetas
+document.querySelectorAll('.srv').forEach(c => c.addEventListener('pointermove', e => {
+  const r = c.getBoundingClientRect();
+  c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+  c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+}));
+
+// Orden de trabajo: avanza sola una vez, con luces rojo, azul y verde
+const pasos = [...document.querySelectorAll('.pasos li')];
+const leds = { 0: '.led.r', 1: '.led.r', 2: '.led.b', 3: '.led.g' };
+const sinMov = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function avanzar(i) {
+  if (i >= pasos.length) return;
+  pasos[i].classList.add('hecho');
+  document.querySelector(leds[i]).classList.add('on');
+  setTimeout(() => avanzar(i + 1), sinMov ? 0 : 1100);
+}
+setTimeout(() => avanzar(0), sinMov ? 0 : 1200);
+
+// Estado abierto/cerrado según hora de Chile
+(function () {
+  const ahora = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Santiago' }));
+  const dia = ahora.getDay(), hora = ahora.getHours() + ahora.getMinutes() / 60;
+  const cierra = dia >= 1 && dia <= 5 ? 20 : dia === 6 ? 19 : null;
+  const abierto = cierra !== null && hora >= 10 && hora < cierra;
+  const el = document.getElementById('estado');
+  el.classList.add(abierto ? 'abierto' : 'cerrado');
+  el.querySelector('span').textContent = abierto ? 'Abierto ahora, cerramos a las ' + cierra + ':00' : 'Cerrado ahora, pero puedes dejarnos tu mensaje por WhatsApp';
+})();
+
+document.getElementById('anio').textContent = new Date().getFullYear();
 </script>
-
-
 </body>
 </html>

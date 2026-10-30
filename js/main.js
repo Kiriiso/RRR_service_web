@@ -23,6 +23,17 @@ const swiper = new Swiper('.swiper', {
     },
 });
 
+const formatearPrecioCLP = (precio) => {
+    // Si ya viene formateado como texto (ej: "$15.990"), lo retorna directo
+    if (typeof precio === 'string') return precio;
+
+    return new Intl.NumberFormat('es-CL', {
+        style: 'currency',
+        currency: 'CLP',
+        maximumFractionDigits: 0
+    }).format(precio);
+};
+
 const productos = {
     mouse1: {
         nombre: "Mouse Prueba 1",

@@ -45,7 +45,7 @@
             "img/laptop_hp_especificaciones.jpeg"
         ], 
         "categoria": "Computadores",
-        "precio": "$359.990",
+        "precio": 359.990,
         "stock": true,
         "descripcion": "Descripción de la laptop HP.",
         "caracteristicas": [

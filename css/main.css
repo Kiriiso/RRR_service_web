@@ -38,7 +38,7 @@ body {
 }
 
 .header {
-    position: sticky; /* dejar el header fijo en la parte superior */ 
+    position: sticky;
     top: 0;
     z-index: 100;
     background: rgba(10, 10, 10, 0.95);
@@ -178,7 +178,7 @@ body {
     color: var(--texto-suave);
 }
 
-.accesorio-card img { /* Ajusta el tamaño de la imagen del accesorio */
+.accesorio-card img {
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -187,8 +187,8 @@ body {
 
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta automáticamente el número de columnas según el tamaño de la pantalla */
-    gap: 2rem; /* en movil, se mostrará una columna, en tablet dos y en escritorio tres */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .servicio-card {
@@ -362,7 +362,6 @@ html {
     background: var(--naranja);
 }
 
-/* Tarjeta del catálogo */
 .accesorio-card {
     display: block;
     text-decoration: none;
@@ -389,7 +388,6 @@ html {
     margin-bottom: 1rem;
 }
 
-/* Página de producto */
 .producto-detalle {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -469,4 +467,42 @@ html {
 .miniatura.activa {
     opacity: 1;
     border-color: var(--azul);
+}
+
+/* ===== Borde RGB animado con halo ===== */
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes girar-borde {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes rgb-glow {
+  0%   { box-shadow: inset 0 0 15px rgba(255,0,0,0.7), inset 0 0 30px rgba(0,255,0,0.5), inset 0 0 45px rgba(0,0,255,0.4); }
+  33%  { box-shadow: inset 0 0 15px rgba(0,255,0,0.7), inset 0 0 30px rgba(0,0,255,0.5), inset 0 0 45px rgba(255,0,0,0.4); }
+  66%  { box-shadow: inset 0 0 15px rgba(0,0,255,0.7), inset 0 0 30px rgba(255,0,0,0.5), inset 0 0 45px rgba(0,255,0,0.4); }
+  100% { box-shadow: inset 0 0 15px rgba(255,0,0,0.7), inset 0 0 30px rgba(0,255,0,0.5), inset 0 0 45px rgba(0,0,255,0.4); }
+}
+
+.rgb-border {
+  padding: 4px;
+  border-radius: 12px;
+  background: conic-gradient(
+    from var(--angle),
+    #ff0000, #00ff00, #0000ff, #ff0000
+  );
+  animation: girar-borde 4s linear infinite, rgb-glow 6s linear infinite;
+}
+
+.rgb-border > * {
+  background: #0a0d14;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
 }
