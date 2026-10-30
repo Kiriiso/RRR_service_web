@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico">
+                <span class="gradient-text">Servicio Técnico RRR</span>
+            </a>
+            <nav>
+                <ul class="nav-main">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Accesorios</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="gradient-text">Accesorios</h2>
+                    <p>Encuentra los mejores accesorios para tus dispositivos</p>
+                </header>
+
+                <div class="swiper">
+                    <div class="swiper-wrapper" id="catalogo">
+                    </div>
+
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="copy">&copy; 2026 Servicio Técnico RRR. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script al final, después de cargar Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    fetch('data/productos.json')
+        .then(res => res.json())
+        .then(productos => {
+            const catalogo = document.getElementById('catalogo');
+
+            productos.forEach(p => {
+                const slide = document.createElement('a');
+                slide.href = `producto.html?id=${p.id}`;
+                slide.className = 'accesorio-card swiper-slide';
+                slide.innerHTML = `
+                    <img src="${p.imagenes[0]}" alt="${p.nombre}">
+                    <span class="producto-categoria">${p.categoria}</span>
+                    <h3>${p.nombre}</h3>
+                    <p class="producto-precio">${p.precio}</p>
+                    <p>${p.descripcion}</p>
+                `;
+                catalogo.appendChild(slide);
+            });
+
+            new Swiper('.swiper', {
+                slidesPerView: 1,
+                spaceBetween: 24,
+                loop: true,
+                breakpoints: {
+                    700: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 }
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        })
+        .catch(() => {
+            document.getElementById('catalogo').innerHTML =
+                '<p style="color:var(--texto-suave)">Error al cargar los productos.</p>';
+        });
+</script>
+</body>
+</html>

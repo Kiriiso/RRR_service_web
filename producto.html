@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico">
+                <span class="gradient-text">Servicio Técnico RRR</span>
+            </a>
+            <nav>
+                <ul class="nav-main">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Accesorios</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container" id="producto-contenedor">
+                <!-- generado por JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="copy">&copy; 2026 Servicio Técnico RRR. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const id = new URLSearchParams(window.location.search).get('id');
+        const contenedor = document.getElementById('producto-contenedor');
+        function cambiarImagen(src, miniatura) {
+            document.getElementById('imagen-principal').src = src;
+            document.querySelectorAll('.miniatura').forEach(m => m.classList.remove('activa'));
+            miniatura.classList.add('activa');
+        }
+
+        fetch('data/productos.json')
+            .then(res => res.json())
+            .then(productos => {
+                const producto = productos.find(p => p.id === id);
+
+                if (!producto) {
+                    contenedor.innerHTML = `
+                        <p style="color:var(--texto-suave); margin-bottom:1rem;">
+                            Producto no encontrado.
+                        </p>
+                        <a href="catalogo.html" class="btn">← Volver al catálogo</a>
+                    `;
+                    return;
+                }
+
+                document.title = `${producto.nombre} — RRR`;
+
+                const listaCaracteristicas = producto.caracteristicas
+                    .map(c => `
+                        <li>
+                            <i class="fas fa-check" style="color:var(--verde); margin-right:.5rem;"></i>
+                            ${c}
+                        </li>`)
+                    .join('');
+
+                const miniaturas = producto.imagenes
+    .map((src, i) => `
+        <img src="${src}" alt="${producto.nombre} ${i + 1}"
+             class="miniatura ${i === 0 ? 'activa' : ''}"
+             onclick="cambiarImagen('${src}', this)">
+    `)
+    .join('');
+
+                contenedor.innerHTML = `
+                    <a href="catalogo.html"
+                    style="color:var(--azul); text-decoration:none; display:inline-block; margin-bottom:2rem;">
+                        ← Volver al catálogo
+                    </a>
+                    <div class="producto-detalle">
+                        <div class="galeria">
+                            <img id="imagen-principal" src="${producto.imagenes[0]}" alt="${producto.nombre}">
+                            <div class="miniaturas">${miniaturas}</div>
+                        </div>
+                        <div class="producto-info">
+                            <span class="producto-categoria">${producto.categoria}</span>
+                            <h2 class="gradient-text">${producto.nombre}</h2>
+                            <p class="producto-precio">${producto.precio}</p>
+                            <p style="color:var(--texto-suave)">${producto.descripcion}</p>
+                            <ul>${listaCaracteristicas}</ul>
+                            <a href="https://wa.me/56975530368?text=Hola,%20me%20interesa%20el%20producto%20${encodeURIComponent(producto.nombre)}"
+                            class="btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(() => {
+                contenedor.innerHTML = `
+                    <p style="color:var(--texto-suave); margin-bottom:1rem;">
+                        Error al cargar el producto.
+                    </p>
+                    <a href="catalogo.html" class="btn">← Volver al catálogo</a>
+                `;
+            });
+    </script>
+</body>
+</html>

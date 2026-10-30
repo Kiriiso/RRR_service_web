@@ -1,0 +1,93 @@
+[
+    {
+        "id": "mouse1",
+        "nombre": "Mouse Prueba 1",
+        "imagenes": [
+            "img/mouse1-principal.jpg",
+            "img/mouse1-detalle.jpg",
+            "img/mouse1-lateral.jpg"
+        ],
+        "categoria": "Mouse",
+        "precio": "$15.990",
+        "stock": true,
+        "descripcion": "Descripción del mouse de prueba 1.",
+        "caracteristicas": [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3"
+        ]
+    },
+    {
+        "id": "mouse2",
+        "nombre": "Mouse Prueba 2",
+        "imagenes": [
+            "img/mouse2-principal.jpg",
+            "img/mouse2-detalle.jpg",
+            "img/mouse2-lateral.jpg"
+        ],
+        "categoria": "Mouse",
+        "precio": "$19.990",
+        "stock": true,
+        "descripcion": "Descripción del mouse de prueba 2.",
+        "caracteristicas": [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3"
+        ]
+    },
+    {
+        "id": "Laptop_hp",
+        "nombre": "Laptop HP",
+        "imagenes": [
+            "img/laptop_hp_principal.jpeg",
+            "img/laptop_hp_detalle.jpeg",
+            "img/laptop_hp_lateral.jpeg",
+            "img/laptop_hp_especificaciones.jpeg"
+        ], 
+        "categoria": "Computadores",
+        "precio": "$359.990",
+        "stock": true,
+        "descripcion": "Descripción de la laptop HP.",
+        "caracteristicas": [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3"
+        ]
+    },
+    {
+        "id": "audifonos4",
+        "nombre": "Audífonos Prueba 4",
+        "imagenes": [
+            "img/audifono-principal.jpg",
+            "img/audifono-detalle.jpg",
+            "img/audifono-lateral.jpg"
+        ],
+        "categoria": "Audio",
+        "precio": "$34.990",
+        "stock": true,
+        "descripcion": "Descripción de los audífonos de prueba 4.",
+        "caracteristicas": [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3"
+        ]
+    },
+    {
+        "id": "audifonos5",
+        "nombre": "Audífonos Prueba 5",
+        "imagenes": [
+            "img/audifonos5-principal.jpg",
+            "img/audifonos5-detalle.jpg",
+            "img/audifonos5-lateral.jpg"
+        ],
+        "categoria": "Audio",
+        "precio": "$39.990",
+        "stock": true,
+        "descripcion": "Descripción de los audífonos de prueba 5.",
+        "caracteristicas": [
+            "Característica 1",
+            "Característica 2",
+            "Característica 3"
+        ]
+    }
+]
