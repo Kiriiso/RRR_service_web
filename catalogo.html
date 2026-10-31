@@ -1,186 +1,72 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <style>
-    #pantalla-carga {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #0a0d14;
-        z-index: 9999;
-        transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    #pantalla-carga.oculta {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    #pantalla-carga img {
-        width: 128px;
-        border-radius: 50%;
-        animation: rebote 1s infinite;
-    }
-
-    @media (min-width: 768px) {
-        #pantalla-carga img {
-            width: 192px;
-        }
-    }
-
-    @keyframes rebote {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
-
-    /* Borde RGB animado */
-    @property --angle {
-        syntax: '<angle>';
-        initial-value: 0deg;
-        inherits: false;
-    }
-
-    @keyframes girar-borde {
-        to {
-            --angle: 360deg;
-        }
-    }
-
-    .rgb-border {
-        padding: 4px;
-        border-radius: 12px;
-        background: conic-gradient(
-            from var(--angle),
-            #ff0000, #00ff00, #0000ff, #ff0000
-        );
-        animation: girar-borde 4s linear infinite;
-        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.3), 0 0 45px rgba(0, 0, 255, 0.3);
-    }
-
-    .rgb-border > * {
-        background: #0a0d14;
-        border-radius: 10px;
-    }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accesorios | RRR Servicio Técnico Los Andes</title>
+<meta name="description" content="Accesorios para celulares, computadores y consolas en Los Andes. Consulta disponibilidad y precio por WhatsApp.">
+<meta name="theme-color" content="#0b0e14">
+<link rel="icon" href="img/logorrr.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-    <div id="pantalla-carga">
-        <img src="img/logorrr.jpeg" alt="Cargando...">
 
+<div id="pantalla-carga"><img src="img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    <ul class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html" aria-current="page">Accesorios</a></li>
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <h1>Accesorios para <span class="rgb-text">tus equipos</span></h1>
+      <p>Elige un producto y pregúntanos por WhatsApp si hay stock.</p>
     </div>
+  </section>
 
-    <div class="rgb-border">
-
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico">
-                <span class="gradient-text">Servicio Técnico RRR</span>
-            </a>
-            <nav>
-                <ul class="nav-main">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="catalogo.html">Accesorios</a></li>
-                    <li><a href="index.html#servicios">Servicios</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section class="section">
-            <div class="container">
-                <header class="section-header">
-                    <h2 class="gradient-text">Accesorios</h2>
-                    <p>Encuentra los mejores accesorios para tus dispositivos</p>
-                </header>
-
-                <div class="swiper">
-                    <div class="swiper-wrapper" id="catalogo">
-                    </div>
-
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p class="copy">&copy; 2026 Servicio Técnico RRR. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+  <section class="s" style="padding-top:1rem">
+    <div class="wrap">
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
+      <p class="cuenta" id="cuenta" aria-live="polite"></p>
+      <div class="grid-prod" id="catalogo">
+        <div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div>
+      </div>
     </div>
-    <!-- Script al final, después de cargar Swiper -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    fetch('data/productos.json')
-        .then(res => res.json())
-        .then(productos => {
-            const catalogo = document.getElementById('catalogo');
+  </section>
 
-            productos.forEach(p => {
-                const slide = document.createElement('a');
-                slide.href = `producto.html?id=${p.id}`;
-                slide.className = 'accesorio-card swiper-slide';
-                slide.innerHTML = `
-                    <img src="${p.imagenes[0]}" alt="${p.nombre}">
-                    <span class="producto-categoria">${p.categoria}</span>
-                    <h3>${p.nombre}</h3>
-                    <p class="producto-precio">${p.precio}</p>
-                    <p>${p.descripcion}</p>
-                `;
-                catalogo.appendChild(slide);
-            });
+  <section class="cta">
+    <div class="wrap">
+      <h2>¿No ves lo que buscas? <span class="rgb-text">Pregúntanos</span></h2>
+      <a class="btn btn-wa" href="https://wa.me/56975530368?text=Hola,%20busco%20un%20accesorio" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Hablar por WhatsApp</a>
+    </div>
+  </section>
+</main>
 
-            new Swiper('.swiper', {
-                slidesPerView: 1,
-                spaceBetween: 24,
-                loop: true,
-                breakpoints: {
-                    700: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 }
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-        })
-        .catch(() => {
-            document.getElementById('catalogo').innerHTML =
-                '<p style="color:var(--texto-suave)">Error al cargar los productos.</p>';
-        });
-</script>
-<script src="js/main.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            const pantalla = document.getElementById('pantalla-carga');
-            pantalla.classList.add('oculta');
-            setTimeout(() => pantalla.remove(), 500);
-        });
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="anio">2026</span> Servicio Técnico RRR. Todos los derechos reservados.</span>
+    <span><a href="index.html#contacto">Locales y horario</a> ·
+      <a href="https://www.instagram.com/rrrserviciotecnico" target="_blank" rel="noopener noreferrer" aria-label="Instagram de RRR Servicio Técnico"><i class="fab fa-instagram"></i> @rrrserviciotecnico</a></span>
+  </div>
+</footer>
 
-        // Respaldo: oculta la pantalla de carga aunque algún recurso tarde demasiado
-        setTimeout(() => {
-            const pantalla = document.getElementById('pantalla-carga');
-            if (pantalla) pantalla.classList.add('oculta');
-        }, 5000);
-    </script>
+<a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script src="js/main.js" defer></script>
+<script src="js/catalogo.js" defer></script>
 </body>
 </html>
