@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Página no encontrada | RRR Servicio Técnico</title>
+<meta name="theme-color" content="#0b0e14">
+<link rel="icon" href="/img/logorrr.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>  
+<div id="pantalla-carga"><img src="/img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a href="/index.html" class="brand"><img src="/img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    <ul class="menu">
+      <li><a href="/index.html">Inicio</a></li>
+      <li><a href="/catalogo.html">Accesorios</a></li>
+      <li><a href="/index.html#servicios">Servicios</a></li>
+      <li><a href="/index.html#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="e404">
+  <div class="wrap">
+    <div class="num rgb-text">404</div>
+    <h1>Esta página no está en el taller</h1>
+    <aside class="orden" aria-label="Resultado de la búsqueda">
+      <div class="orden-head"><strong>Orden de trabajo #404</strong>
+        <div class="leds" aria-hidden="true"><span class="led r on parpadeo"></span><span class="led b"></span><span class="led g"></span></div>
+      </div>
+      <ul class="pasos">
+        <li class="hecho"><i class="fas fa-check"></i> Recibimos tu enlace</li>
+        <li class="hecho"><i class="fas fa-check"></i> Buscamos en todo el sitio</li>
+        <li class="fallo"><i class="fas fa-xmark"></i> <span>Página: no encontrada</span></li>
+      </ul>
+      <p class="orden-foot">Buscabas: <span class="ruta" id="ruta">esta dirección</span></p>
+    </aside>
+    <div class="acciones">
+      <a class="btn btn-ghost" href="/index.html"><i class="fas fa-house"></i> Ir al inicio</a>
+      <a class="btn btn-ghost" href="/catalogo.html"><i class="fas fa-headphones"></i> Ver accesorios</a>
+      <a class="btn btn-wa" href="https://wa.me/56975530368?text=Hola,%20encontré%20un%20enlace%20roto%20en%20su%20página" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Avisarnos</a>
+    </div>
+  </div>
+</main>
+
+<a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<script src="/js/main.js" defer></script>
+<script>document.getElementById('ruta').textContent = location.pathname;</script>
+</body>
+</html>
