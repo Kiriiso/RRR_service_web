@@ -3,20 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TÍTULO que se ve en la pestaña y en Google (la descripción va justo debajo) -->
 <title>Producto | RRR Servicio Técnico</title>
 <meta name="description" content="Detalle del producto. Consulta disponibilidad y precio por WhatsApp.">
 <meta name="theme-color" content="#0b0e14">
 <link rel="icon" href="img/logorrr.jpeg">
+<!-- Fuentes (Google Fonts) e íconos (Font Awesome) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Estilos del sitio: colores, tipografías y diseño están en css/main.css -->
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
+<!-- PANTALLA DE CARGA: logo que rebota; js/main.js la oculta al terminar de cargar -->
 <div id="pantalla-carga"><img src="img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
 
+<!-- BARRA SUPERIOR: logo y menú. Si agregas una página, añade su enlace aquí y en las demás páginas -->
 <header class="top">
   <div class="wrap nav">
     <a href="index.html" class="brand"><img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
@@ -30,6 +35,7 @@
   </div>
 </header>
 
+<!-- FICHA DE PRODUCTO: js/producto.js lee ?id=... de la dirección y dibuja aquí el producto de data/productos.json -->
 <main>
   <section class="s" style="padding-top:2.5rem">
     <div class="wrap" id="producto">
@@ -38,6 +44,7 @@
   </section>
 </main>
 
+<!-- PIE DE PÁGINA -->
 <footer>
   <div class="wrap">
     <span>&copy; <span id="anio">2026</span> Servicio Técnico RRR. Todos los derechos reservados.</span>
@@ -46,8 +53,10 @@
   </div>
 </footer>
 
+<!-- BOTÓN FLOTANTE DE WHATSAPP: el número va en la dirección wa.me/56975530368 (formato 56 + número, sin + ni espacios) -->
 <a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+<!-- SCRIPTS: main.js común al sitio; producto.js solo de esta página -->
 <script src="js/main.js" defer></script>
 <script src="js/producto.js" defer></script>
 </body>

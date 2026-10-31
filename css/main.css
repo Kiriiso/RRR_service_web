@@ -1,17 +1,47 @@
+/* =====================================================================
+   RRR Servicio Técnico · Estilos compartidos por TODAS las páginas
+   ---------------------------------------------------------------------
+   Índice (busca con Ctrl+F el texto entre ===== ):
+   1. Variables: colores y fuentes (:root, justo debajo)
+   2. BASE, PANTALLA DE CARGA, BARRA SUPERIOR, BOTONES
+   3. HERO, SECCIONES, SERVICIOS, CÓMO TRABAJAMOS, LOCALES, PIE
+   4. CATÁLOGO (tarjetas) y FILTROS
+   5. FICHA DE PRODUCTO
+   6. ERROR 404
+   7. RESPONSIVE (@media) al final de la parte 3
+   Colores que NO están en variables: verde WhatsApp #25d366 (.btn-wa y
+   .wa-float) y los brillos del fondo del hero (.hero).
+   ===================================================================== */
+
 :root{
-  --bg:#0b0e14; --bench:#121722; --bench-2:#171d2b; --line:rgba(255,255,255,.09);
-  --text:#e9edf5; --muted:#98a2b8;
-  --r:#ff4d5e; --g:#34f0a0; --b:#4d94ff;
-  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+  /* --- COLORES (cambia aquí y se actualiza todo el sitio) --- */
+  --bg:#0b0e14;            /* fondo principal de la página (casi negro azulado) */
+  --bench:#121722;         /* fondo de tarjetas y paneles */
+  --bench-2:#171d2b;       /* fondo de elementos dentro de tarjetas (fotos, íconos) */
+  --line:rgba(255,255,255,.09); /* color de bordes y líneas divisorias */
+  --text:#e9edf5;          /* texto principal (blanco suave) */
+  --muted:#98a2b8;         /* texto secundario (gris azulado) */
+  --r:#ff4d5e;             /* ROJO de marca */
+  --g:#34f0a0;             /* VERDE de marca */
+  --b:#4d94ff;             /* AZUL de marca */
+  /* --- FUENTES (se cargan en el <head> de cada HTML) --- */
+  --display:'Bricolage Grotesque',system-ui,sans-serif; /* títulos */
+  --body:'Figtree',system-ui,sans-serif;                /* texto corrido */
 }
+/* ===== BASE: reinicio de márgenes y estilos generales ===== */
 *{box-sizing:border-box;margin:0;padding:0}
+/* Scroll suave; scroll-padding evita que el menú fijo tape los títulos al ir a #servicios o #contacto */
 html{scroll-behavior:smooth;scroll-padding-top:84px}
+/* Fondo y texto general de la página */
 body{background:var(--bg);color:var(--text);font:400 1.05rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 :focus-visible{outline:3px solid var(--b);outline-offset:3px;border-radius:6px}
+/* Contenedor centrado: ancho máximo 1120px (cámbialo para ensanchar o angostar el sitio) */
 .wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+/* Todos los títulos usan la fuente display */
 h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.02em}
+/* Texto con degradado rojo-verde-azul animado (clase para palabras destacadas) */
 .rgb-text{background:linear-gradient(90deg,var(--r),var(--g),var(--b),var(--r));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 8s linear infinite}
 @keyframes flow{to{background-position:250% 0}}
 
@@ -26,18 +56,24 @@ h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.02em}
 @keyframes girar{to{--angle:360deg}}
 header.top{position:sticky;top:0;z-index:50;background:rgba(11,14,20,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 header.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:linear-gradient(90deg,var(--r),var(--g),var(--b));opacity:.8}
+/* Fila del menú: altura 68px (si la cambias, ajusta también top:68px del menú móvil) */
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .brand{display:flex;align-items:center;gap:.7rem;font:700 1.15rem var(--display)}
+/* Logo redondo con borde RGB que gira */
 .brand img{width:40px;height:40px;border-radius:50%;padding:2px;background:conic-gradient(from var(--angle),var(--r),var(--g),var(--b),var(--r));animation:girar 4s linear infinite}
+/* Enlaces del menú (en móvil se ocultan; ver @media al final) */
 .menu{display:flex;gap:.4rem;list-style:none}
 .menu a{padding:.5rem .9rem;border-radius:999px;color:var(--muted);font-weight:500;transition:.2s}
 .menu a:hover{color:var(--text);background:var(--bench-2)}
+/* Botón hamburguesa (solo se ve en móvil) */
 .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:12px;font-size:1.1rem;cursor:pointer}
 
 /* Botones */
 .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.4rem;border-radius:14px;font-weight:600;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer}
 .btn:hover{transform:translateY(-2px)}
+/* Botón verde de WhatsApp (#25d366 es el verde oficial) */
 .btn-wa{background:#25d366;color:#04230f;box-shadow:0 8px 24px -8px rgba(37,211,102,.6)}
+/* Botón secundario con solo borde */
 .btn-ghost{border-color:var(--line);background:var(--bench)}
 .btn-ghost:hover{border-color:var(--b)}
 
@@ -45,24 +81,29 @@ header.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height
 .hero{position:relative;padding:5rem 0 4rem;background:
   radial-gradient(700px 380px at 85% 10%,rgba(77,148,255,.16),transparent 70%),
   radial-gradient(600px 340px at 0% 90%,rgba(255,77,94,.12),transparent 70%)}
+/* Cuadrícula de fondo (44px = tamaño de cada cuadro) */
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(#000,transparent 85%);opacity:.5;pointer-events:none}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center}
 .hero h1{font-size:clamp(2.4rem,5.4vw,4.2rem);font-weight:800}
 .hero p.lead{margin:1.4rem 0 2rem;color:var(--muted);max-width:52ch;font-size:1.15rem}
 .hero .actions{display:flex;flex-wrap:wrap;gap:.8rem}
+/* Etiqueta "Abierto ahora / Cerrado ahora" (la rellena js/main.js) */
 .estado{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.4rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--bench);font-size:.92rem;color:var(--muted)}
 .estado i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
 .estado.abierto i{background:var(--g);box-shadow:0 0 10px var(--g)}
 .estado.cerrado i{background:var(--r)}
 
+/* Tarjeta "Orden de trabajo" (hero y página 404) */
 .orden{background:var(--bench);border:1px solid var(--line);border-radius:20px;padding:1.5rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);transform:rotate(1.6deg)}
 .orden-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px dashed var(--line);margin-bottom:1.1rem}
 .orden-head strong{font:700 1.05rem var(--display)}
 .leds{display:flex;gap:.5rem}
+/* Luces de la orden: .r rojo, .b azul, .g verde; se encienden con la clase .on */
 .led{width:12px;height:12px;border-radius:50%;background:#2a3142;transition:.4s}
 .led.on.r{background:var(--r);box-shadow:0 0 12px var(--r)}
 .led.on.b{background:var(--b);box-shadow:0 0 12px var(--b)}
 .led.on.g{background:var(--g);box-shadow:0 0 12px var(--g)}
+/* Lista de pasos de la orden; la clase .hecho marca un paso en verde */
 .pasos{list-style:none;display:grid;gap:.85rem}
 .pasos li{display:flex;gap:.8rem;align-items:center;color:var(--muted);transition:color .4s}
 .pasos li i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;border:1px solid var(--line);transition:.4s}
@@ -77,8 +118,10 @@ section.s{padding:5rem 0}
 .s-head p{color:var(--muted);margin-top:.8rem}
 
 /* Servicios: panel de herramientas, la tarjeta principal es más grande */
+/* Grilla de servicios: 6 columnas (tarjeta normal ocupa 2, la .big ocupa 4) */
 .bench{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
 .srv{position:relative;grid-column:span 2;display:flex;flex-direction:column;gap:.7rem;padding:1.6rem;border-radius:18px;background:var(--bench);border:1px solid var(--line);overflow:hidden;transition:border-color .25s,transform .25s}
+/* Luz azul que sigue al mouse (la posición la fija js/main.js) */
 .srv::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(77,148,255,.18),transparent 70%);opacity:0;transition:opacity .3s}
 .srv:hover{border-color:rgba(255,255,255,.22);transform:translateY(-3px)}
 .srv:hover::before{opacity:1}
@@ -91,11 +134,13 @@ section.s{padding:5rem 0}
 .srv:hover .ask i{transform:translateX(4px)}
 .srv.big{grid-column:span 4;grid-row:span 1;background:linear-gradient(135deg,var(--bench),#14213a)}
 .srv.big h3{font-size:1.8rem}
+/* Color del ícono de cada servicio (rojo, azul o verde según su posición) */
 .srv:nth-child(2) .ico{color:var(--b)}.srv:nth-child(3) .ico{color:var(--g)}.srv:nth-child(1) .ico{color:var(--r)}
 .srv:nth-child(4) .ico{color:var(--b)}.srv:nth-child(5) .ico{color:var(--r)}.srv:nth-child(6) .ico{color:var(--g)}
 
 /* Cómo trabajamos (aquí sí es una secuencia) */
 .how{background:var(--bench);border-block:1px solid var(--line)}
+/* Pasos numerados de "Así trabajamos" (el número lo genera el CSS con counter) */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:p;list-style:none}
 .steps li{counter-increment:p;position:relative;padding-top:3.2rem}
 .steps li::before{content:counter(p);position:absolute;top:0;left:0;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 1.1rem var(--display);background:var(--bg);border:2px solid var(--b)}
@@ -105,24 +150,30 @@ section.s{padding:5rem 0}
 
 /* Locales */
 .locales{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+/* Tarjeta de cada local */
 .local{padding:1.6rem;border-radius:18px;border:1px solid var(--line);background:var(--bench)}
 .local h3{font-size:1.2rem;margin-bottom:.4rem}
 .local p{color:var(--muted)}
 .local a{display:inline-flex;gap:.5rem;align-items:center;margin-top:1rem;font-weight:600;color:var(--b)}
+/* Tarjetas de horario de atención */
 .horario{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .horario div{padding:1.1rem 1.3rem;border:1px solid var(--line);border-radius:14px;background:var(--bench)}
 .horario b{display:block;font-family:var(--display);font-size:1.05rem}
 .horario span{color:var(--muted);font-size:.95rem}
 
 /* CTA + pie */
+/* Bloque final de llamada a la acción */
 .cta{text-align:center;padding:5rem 0}
 .cta h2{font-size:clamp(1.9rem,4vw,3rem);max-width:18ch;margin:0 auto 1.6rem}
+/* Pie de página */
 footer{border-top:1px solid var(--line);padding:2.2rem 0;color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
 footer a:hover{color:var(--text)}
+/* Botón flotante de WhatsApp (esquina inferior derecha) */
 .wa-float{position:fixed;right:1.2rem;bottom:1.2rem;z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#04230f;font-size:1.8rem;box-shadow:0 10px 30px -6px rgba(37,211,102,.7);transition:transform .2s}
 .wa-float:hover{transform:scale(1.08)}
 
+/* ===== RESPONSIVE: tablet (hasta 900px de ancho) ===== */
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:1fr}
   .orden{transform:none}
@@ -133,6 +184,7 @@ footer a:hover{color:var(--text)}
   .steps li::after{display:none}
   .locales,.horario{grid-template-columns:1fr}
 }
+/* ===== RESPONSIVE: móvil (hasta 640px); aquí aparece el menú hamburguesa ===== */
 @media (max-width:640px){
   .burger{display:block}
   .menu{position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:.8rem 1.25rem 1.2rem;background:var(--bg);border-bottom:1px solid var(--line);display:none}
@@ -140,23 +192,29 @@ footer a:hover{color:var(--text)}
   .bench,.steps{grid-template-columns:1fr}
   .srv.big{grid-column:span 1}
 }
+/* Accesibilidad: apaga las animaciones si el usuario lo pide en su sistema */
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 /* ===== Catálogo ===== */
 .menu a[aria-current]{color:var(--text);background:var(--bench-2)}
+/* Encabezado de las páginas internas */
 .page-head{padding:3.5rem 0 .5rem;background:radial-gradient(600px 300px at 90% 0,rgba(77,148,255,.14),transparent 70%)}
 .page-head h1{font-size:clamp(2rem,4.5vw,3rem);font-weight:800}
 .page-head p{color:var(--muted);margin-top:.6rem}
 .filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 .8rem}
+/* Botones de filtro (categorías y Novedades) */
 .chip{padding:.5rem 1.05rem;border-radius:999px;border:1px solid var(--line);background:var(--bench);color:var(--muted);font:500 .95rem var(--body);cursor:pointer;transition:.2s}
 .chip:hover{color:var(--text);border-color:rgba(255,255,255,.25)}
 .chip[aria-pressed="true"]{color:#06101f;background:var(--b);border-color:var(--b);font-weight:600}
 .cuenta{color:var(--muted);font-size:.95rem;margin-bottom:1.4rem}
+/* Grilla de productos: columnas automáticas de mínimo 250px */
 .grid-prod{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem}
+/* Tarjeta de producto */
 .prod{position:relative;display:flex;flex-direction:column;border-radius:18px;background:var(--bench);border:1px solid var(--line);overflow:hidden;transition:transform .25s,border-color .25s}
 .prod:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
-.prod-img{aspect-ratio:1;background:var(--bench-2)}
-.prod-img img{width:100%;height:100%;object-fit:contain;padding:.8rem}
+/* Caja cuadrada de la foto, igual para todas (aspect-ratio:1). Se recorta con object-fit:cover; usa contain para no recortar */
+.prod-img{aspect-ratio:1;background:var(--bench-2);overflow:hidden}
+.prod-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .prod-body{display:flex;flex-direction:column;gap:.4rem;padding:1.1rem 1.2rem 1.3rem;flex:1}
 .prod-cat{font-size:.88rem;color:var(--g);font-weight:500}
 .prod h3{font-size:1.1rem}
@@ -165,12 +223,14 @@ footer a:hover{color:var(--text)}
 .prod .precio{font:800 1.35rem var(--display)}
 .prod .btn{position:relative;z-index:2;justify-content:center;margin-top:.6rem;padding:.65rem 1rem;font-size:.95rem}
 .vacio{color:var(--muted);padding:2rem 0;grid-column:1/-1}
+/* Animación de carga mientras llegan los productos */
 .esqueleto{height:380px;border-radius:18px;background:linear-gradient(100deg,var(--bench) 30%,var(--bench-2) 50%,var(--bench) 70%);background-size:200% 100%;animation:brillo 1.4s linear infinite}
 @keyframes brillo{to{background-position:-200% 0}}
 
 /* ===== Ficha de producto ===== */
 .volver{display:inline-flex;gap:.5rem;align-items:center;color:var(--b);font-weight:600;margin-bottom:1.8rem}
 .volver:hover{text-decoration:underline}
+/* Ficha de producto: fotos a la izquierda, datos a la derecha */
 .detalle{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:start}
 .galeria .principal{aspect-ratio:1;border-radius:20px;background:var(--bench-2);border:1px solid var(--line);overflow:hidden}
 .galeria .principal img{width:100%;height:100%;object-fit:contain;padding:1.2rem}
@@ -189,6 +249,7 @@ footer a:hover{color:var(--text)}
 @media (max-width:800px){.detalle{grid-template-columns:1fr;gap:1.8rem}}
 
 /* ===== Error 404 ===== */
+/* Página de error 404 */
 .e404{min-height:68vh;display:grid;place-items:center;padding:4rem 0;text-align:center}
 .e404 .num{font:800 clamp(5rem,18vw,9rem)/1 var(--display)}
 .e404 h1{font-size:clamp(1.6rem,3.4vw,2.2rem);margin-top:.6rem}
@@ -199,3 +260,26 @@ footer a:hover{color:var(--text)}
 @keyframes parpadeo{50%{opacity:.2}}
 .ruta{color:var(--r);word-break:break-all}
 .acciones{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+
+/* ===== Filtros del catálogo ===== */
+.barra{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.6rem 0 1rem}
+/* Caja de cada control del catálogo (buscador, precio, orden) */
+.campo{display:flex;align-items:center;gap:.6rem;padding:0 .9rem;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--bench);color:var(--muted)}
+.campo:focus-within{border-color:var(--b)}
+.campo input,.campo select{background:none;border:0;color:var(--text);font:inherit;outline:none;min-width:0}
+.campo select option{background:var(--bench);color:var(--text)}
+.campo.buscar{flex:1 1 260px}
+.campo.buscar input{width:100%}
+.campo input[type=number]{width:92px;-moz-appearance:textfield}
+.campo input[type=number]::-webkit-inner-spin-button{display:none}
+.campo span{font-size:.9rem;white-space:nowrap}
+#cats{display:contents}
+.chip-nuevo i{color:var(--g);margin-right:.3rem}
+.chip-nuevo[aria-pressed="true"] i{color:#06101f}
+.limpiar{background:none;border:0;color:var(--b);font:600 .95rem var(--body);cursor:pointer;margin-left:.8rem}
+.limpiar:hover{text-decoration:underline}
+/* Etiqueta verde "Novedad" */
+.badge-nuevo{display:inline-block;width:fit-content;padding:.2rem .7rem;border-radius:999px;background:var(--g);color:#04281a;font-weight:700;font-size:.8rem}
+.prod-img{position:relative}
+.prod-img .badge-nuevo{position:absolute;top:.8rem;left:.8rem;z-index:1}
+.rel-t{font-size:1.4rem;margin:3.2rem 0 1.2rem}

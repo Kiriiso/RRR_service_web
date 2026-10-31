@@ -9,7 +9,7 @@
         ],
         "categoria": "Mouse",
         "precio": "$15.990",
-        "stock": true,
+        
         "descripcion": "Descripción del mouse de prueba 1.",
         "caracteristicas": [
             "Característica 1",
@@ -18,76 +18,76 @@
         ]
     },
     {
-        "id": "mouse2",
-        "nombre": "Mouse Prueba 2",
+        "id": "Gamer_pack",
+        "nombre": "DGX Gamer Pack",
         "imagenes": [
-            "img/mouse2-principal.jpg",
-            "img/mouse2-detalle.jpg",
-            "img/mouse2-lateral.jpg"
+            "img/Gamerpack/DGX_gamerpack.webp"
         ],
-        "categoria": "Mouse",
-        "precio": "$19.990",
-        "stock": true,
-        "descripcion": "Descripción del mouse de prueba 2.",
+        "categoria": "Gaming Pack",
+        "precio": "$39.990",
+        
+        "descripcion": "GAMING PACK DGX. Kit Gamer Profesional. Incluye : Mouse, Teclado, Bocinas, Headset y Mousepad.",
         "caracteristicas": [
-            "Característica 1",
-            "Característica 2",
-            "Característica 3"
+            "Teclado con luces LED de colores, switches rojos ABT, recorrido de tecla de 3.6mm y presión de 55 +/- 10g.",
+            "Mouse de 6 botones, sensibilidad ajustble de 800 a 2400 DPI, vida util de 5 millones de clicks y LED parpadeante de colores.",
+            "Bocinas de 3 W x 2 de potencia, drivers de 36 mm, impedancia de 4 om y alimentacion de 5 V DC."
         ]
     },
     {
-        "id": "Laptop_hp",
-        "nombre": "Laptop HP",
+        "id": "Laptop_hp_15",
+        "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
         "imagenes": [
-            "img/laptop_hp_principal.jpeg",
-            "img/laptop_hp_detalle.jpeg",
-            "img/laptop_hp_lateral.jpeg",
-            "img/laptop_hp_especificaciones.jpeg"
+            "img/laptop/laptop_hp_detalle.webp",
+            "img/laptop/laptop_hp_principal.webp",
+            "img/laptop/laptop_hp_tapa.webp",
+            "img/laptop/laptop_hp_lateral.webp"
         ], 
         "categoria": "Computadores",
-        "precio": 359.990,
-        "stock": true,
-        "descripcion": "Descripción de la laptop HP.",
+        "precio": "$329.990",
+        
+        "novedad": true,
+        "descripcion": "Laptop HP perfecta para tu productividad en el trabajo, portatil y eficiente.",
         "caracteristicas": [
-            "Característica 1",
-            "Característica 2",
-            "Característica 3"
+            "Sistema de 64 bits, Windows 11 Home, procesador AMD Ryzen 3 7325U, 8GB RAM, 512GB SSD.",
+            "Nueva, empaquetada, con garantía de 1 año.",
+            "Batería de larga duración, teclado retroiluminado y conectividad Wi-Fi",
+            "15.6 pulgadas Full HD, pantalla antirreflejo, gráficos integrados AMD Radeon."
         ]
     },
     {
-        "id": "audifonos4",
-        "nombre": "Audífonos Prueba 4",
+        "id": "Auriculares_01",
+        "nombre": "Gaming Headphone Warhead - Blue Edition",
         "imagenes": [
-            "img/audifono-principal.jpg",
-            "img/audifono-detalle.jpg",
-            "img/audifono-lateral.jpg"
+            "img/Audifonos/warhead/warhead_blue_principal.webp",
+            "img/Audifonos/warhead/warhead_blue_lateral.webp",
+            "img/Audifonos/warhead/warhead_blue_informativo.webp"
         ],
-        "categoria": "Audio",
-        "precio": "$34.990",
-        "stock": true,
-        "descripcion": "Descripción de los audífonos de prueba 4.",
+        "categoria": "Auriculares",
+        "precio": "$24.990",
+        
+        "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
         "caracteristicas": [
-            "Característica 1",
-            "Característica 2",
-            "Característica 3"
+            "Sonido envolvente 7.1, ideal para juegos y películas.",
+            "Micrófono de alta calidad para llamadas y streaming.",
+            "Diseño ergonómico para un uso prolongado sin incomodidad."
         ]
     },
     {
-        "id": "audifonos5",
-        "nombre": "Audífonos Prueba 5",
+        "id": "Auriculares_02",
+        "nombre": "Gaming Headphone Warhead - Red Edition",
         "imagenes": [
-            "img/audifonos5-principal.jpg",
-            "img/audifonos5-detalle.jpg",
-            "img/audifonos5-lateral.jpg"
+            "img/Audifonos/warhead/warhead_red_principal.webp",
+            "img/Audifonos/warhead/warhead_red_lateral.webp",
+            "img/Audifonos/warhead/warhead_red_informativo.webp"
         ],
-        "categoria": "Audio",
-        "precio": "$39.990",
-        "stock": true,
-        "descripcion": "Descripción de los audífonos de prueba 5.",
+        "categoria": "Auriculares",
+        "precio": "$24.990",
+        
+        "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
         "caracteristicas": [
-            "Característica 1",
-            "Característica 2",
-            "Característica 3"
+            "Sonido envolvente 7.1, ideal para juegos y películas.",
+            "Micrófono de alta calidad para llamadas y streaming.",
+            "Diseño ergonómico para un uso prolongado sin incomodidad."
         ]
     }
 ]

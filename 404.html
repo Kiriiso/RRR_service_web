@@ -2,33 +2,42 @@
 <html lang="es-CL">
 <head>
 <meta charset="UTF-8">
+<!-- OJO: base apunta a /RRR_service_web/ porque el sitio vive en una subcarpeta de GitHub Pages. Si lo pasas a un dominio propio, cámbialo a "/" -->
+<base href="/RRR_service_web/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- noindex: le pide a Google no listar esta página de error -->
 <meta name="robots" content="noindex">
+<!-- TÍTULO que se ve en la pestaña y en Google (la descripción va justo debajo) -->
 <title>Página no encontrada | RRR Servicio Técnico</title>
 <meta name="theme-color" content="#0b0e14">
-<link rel="icon" href="/img/logorrr.jpeg">
+<link rel="icon" href="img/logorrr.jpeg">
+<!-- Fuentes (Google Fonts) e íconos (Font Awesome) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="/css/main.css">
+<!-- Estilos del sitio: colores, tipografías y diseño están en css/main.css -->
+<link rel="stylesheet" href="css/main.css">
 </head>
-<body>  
-<div id="pantalla-carga"><img src="/img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
+<body>
+<!-- PANTALLA DE CARGA: logo que rebota; js/main.js la oculta al terminar de cargar -->
+<div id="pantalla-carga"><img src="img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
 
+<!-- BARRA SUPERIOR: logo y menú. Si agregas una página, añade su enlace aquí y en las demás páginas -->
 <header class="top">
   <div class="wrap nav">
-    <a href="/index.html" class="brand"><img src="/img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
+    <a href="index.html" class="brand"><img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
     <button class="burger" aria-label="Abrir menú" aria-expanded="false"><i class="fas fa-bars"></i></button>
     <ul class="menu">
-      <li><a href="/index.html">Inicio</a></li>
-      <li><a href="/catalogo.html">Accesorios</a></li>
-      <li><a href="/index.html#servicios">Servicios</a></li>
-      <li><a href="/index.html#contacto">Contacto</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html">Accesorios</a></li>
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
     </ul>
   </div>
 </header>
 
+<!-- CONTENIDO DEL ERROR 404: número, mensaje, tarjeta de orden de trabajo y botones de salida -->
 <main class="e404">
   <div class="wrap">
     <div class="num rgb-text">404</div>
@@ -44,16 +53,19 @@
       </ul>
       <p class="orden-foot">Buscabas: <span class="ruta" id="ruta">esta dirección</span></p>
     </aside>
+    <!-- Botones para volver (inicio, accesorios) o avisar por WhatsApp del enlace roto -->
     <div class="acciones">
-      <a class="btn btn-ghost" href="/index.html"><i class="fas fa-house"></i> Ir al inicio</a>
-      <a class="btn btn-ghost" href="/catalogo.html"><i class="fas fa-headphones"></i> Ver accesorios</a>
+      <a class="btn btn-ghost" href="index.html"><i class="fas fa-house"></i> Ir al inicio</a>
+      <a class="btn btn-ghost" href="catalogo.html"><i class="fas fa-headphones"></i> Ver accesorios</a>
       <a class="btn btn-wa" href="https://wa.me/56975530368?text=Hola,%20encontré%20un%20enlace%20roto%20en%20su%20página" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Avisarnos</a>
     </div>
   </div>
 </main>
 
+<!-- BOTÓN FLOTANTE DE WHATSAPP: el número va en la dirección wa.me/56975530368 (formato 56 + número, sin + ni espacios) -->
 <a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<script src="/js/main.js" defer></script>
+<!-- SCRIPTS: main.js común al sitio; el script de abajo muestra la dirección que se intentó abrir -->
+<script src="js/main.js" defer></script>
 <script>document.getElementById('ruta').textContent = location.pathname;</script>
 </body>
 </html>

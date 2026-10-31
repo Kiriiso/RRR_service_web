@@ -1,4 +1,10 @@
-// Script compartido por todas las páginas (cada bloque revisa si su elemento existe)
+/* =====================================================================
+   js/main.js · Script compartido por TODAS las páginas
+   Cada bloque revisa si su elemento existe, así no falla en otras páginas.
+   Bloques: pantalla de carga · menú móvil · luz de tarjetas ·
+            orden de trabajo animada · abierto/cerrado · año del pie
+   ===================================================================== */
+// ===== PANTALLA DE CARGA =====
 // Pantalla de carga (con respaldo a los 5 s)
 const carga = document.getElementById('pantalla-carga');
 window.addEventListener('load', () => { carga.classList.add('oculta'); setTimeout(() => carga.remove(), 500); });
@@ -21,6 +27,7 @@ document.querySelectorAll('.srv').forEach(c => c.addEventListener('pointermove',
 
 // Orden de trabajo: avanza sola una vez, con luces rojo, azul y verde
 const pasos = [...document.querySelectorAll('.pasos li')];
+// Qué luz enciende cada paso: r=rojo, b=azul, g=verde
 const leds = { 0: '.led.r', 1: '.led.r', 2: '.led.b', 3: '.led.g' };
 const sinMov = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function avanzar(i) {
@@ -35,6 +42,7 @@ if (pasos.length) setTimeout(() => avanzar(0), sinMov ? 0 : 1200);
 (function () {
   const ahora = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Santiago' }));
   const dia = ahora.getDay(), hora = ahora.getHours() + ahora.getMinutes() / 60;
+  // HORARIO: lunes a viernes cierra a las 20, sábado a las 19, domingo cerrado; abre a las 10. Cambia estos números si cambia el horario
   const cierra = dia >= 1 && dia <= 5 ? 20 : dia === 6 ? 19 : null;
   const abierto = cierra !== null && hora >= 10 && hora < cierra;
   const el = document.getElementById('estado');

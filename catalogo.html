@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TÍTULO que se ve en la pestaña y en Google (la descripción va justo debajo) -->
 <title>Accesorios | RRR Servicio Técnico Los Andes</title>
 <meta name="description" content="Accesorios para celulares, computadores y consolas en Los Andes. Consulta disponibilidad y precio por WhatsApp.">
 <meta name="theme-color" content="#0b0e14">
+<!-- SEO: enlace canónico y Open Graph (vista previa al compartir). Si cambias de dominio, actualiza estas URLs -->
 <link rel="canonical" href="https://kiriiso.github.io/RRR_service_web/catalogo.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
@@ -16,16 +18,20 @@
 <meta property="og:image" content="https://kiriiso.github.io/RRR_service_web/img/logorrr.jpeg">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="img/logorrr.jpeg">
+<!-- Fuentes (Google Fonts) e íconos (Font Awesome) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Estilos del sitio: colores, tipografías y diseño están en css/main.css -->
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
+<!-- PANTALLA DE CARGA: logo que rebota; js/main.js la oculta al terminar de cargar -->
 <div id="pantalla-carga"><img src="img/logorrr.jpeg" alt="Cargando RRR Servicio Técnico"></div>
 
+<!-- BARRA SUPERIOR: logo y menú. Si agregas una página, añade su enlace aquí y en las demás páginas -->
 <header class="top">
   <div class="wrap nav">
     <a href="index.html" class="brand"><img src="img/logorrr.jpeg" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
@@ -40,6 +46,7 @@
 </header>
 
 <main>
+  <!-- ENCABEZADO de la página -->
   <section class="page-head">
     <div class="wrap">
       <h1>Accesorios para <span class="rgb-text">tus equipos</span></h1>
@@ -49,14 +56,28 @@
 
   <section class="s" style="padding-top:1rem">
     <div class="wrap">
-      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
-      <p class="cuenta" id="cuenta" aria-live="polite"></p>
+      <!-- BARRA DE FILTROS: buscador, rango de precio y orden (la lógica está en js/catalogo.js) -->
+      <div class="barra">
+        <label class="campo buscar"><i class="fas fa-search" aria-hidden="true"></i><input id="q" type="search" placeholder="Buscar por nombre…" aria-label="Buscar por nombre" autocomplete="off"></label>
+        <label class="campo"><span>Precio</span><input id="min" type="number" min="0" inputmode="numeric" placeholder="Mín" aria-label="Precio mínimo"><span>–</span><input id="max" type="number" min="0" inputmode="numeric" placeholder="Máx" aria-label="Precio máximo"></label>
+        <label class="campo"><span>Ordenar</span><select id="orden" aria-label="Ordenar productos">
+          <option value="relevancia">Por defecto</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option><option value="nuevo">Novedades primero</option></select></label>
+      </div>
+      <!-- CHIPS: botón Novedades (producto con "novedad": true) y categorías (se crean solas desde productos.json) -->
+      <div class="filtros" role="group" aria-label="Filtrar por categoría">
+        <button class="chip chip-nuevo" id="nuevo" aria-pressed="false"><i class="fas fa-star" aria-hidden="true"></i>Novedades</button>
+        <span id="cats" style="display:contents"></span>
+      </div>
+      <!-- Contador de resultados y botón Limpiar filtros -->
+      <p class="cuenta"><span id="cuenta" aria-live="polite"></span><button class="limpiar" id="limpiar" hidden>Limpiar filtros</button></p>
+      <!-- PRODUCTOS: js/catalogo.js dibuja aquí las tarjetas (los 4 bloques grises son la animación de carga) -->
       <div class="grid-prod" id="catalogo">
         <div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div><div class="esqueleto"></div>
       </div>
     </div>
   </section>
 
+  <!-- LLAMADA FINAL a WhatsApp -->
   <section class="cta">
     <div class="wrap">
       <h2>¿No ves lo que buscas? <span class="rgb-text">Pregúntanos</span></h2>
@@ -65,6 +86,7 @@
   </section>
 </main>
 
+<!-- PIE DE PÁGINA -->
 <footer>
   <div class="wrap">
     <span>&copy; <span id="anio">2026</span> Servicio Técnico RRR. Todos los derechos reservados.</span>
@@ -73,8 +95,10 @@
   </div>
 </footer>
 
+<!-- BOTÓN FLOTANTE DE WHATSAPP: el número va en la dirección wa.me/56975530368 (formato 56 + número, sin + ni espacios) -->
 <a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+<!-- SCRIPTS: main.js es común a todo el sitio; catalogo.js es solo de esta página -->
 <script src="js/main.js" defer></script>
 <script src="js/catalogo.js" defer></script>
 </body>
