@@ -25,10 +25,10 @@ const utf8b64 = txt => { let bin = ''; new TextEncoder().encode(txt).forEach(b =
 const blobB64 = blob => new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.readAsDataURL(blob); });
 
 let token = localStorage.getItem('rrr_token') || '';
-let rama = '';          // rama principal del repositorio (se detecta sola)
+let rama = '';         
 let productos = [];     // lista actual de productos
-let editando = null;    // id del producto que se edita (null = producto nuevo)
-let fotos = [];         // fotos del formulario: {path} si ya existe, {blob, ext, url} si es nueva
+let editando = null;    // (null = producto nuevo)
+let fotos = [];         // fotos del formulario
 
 function aviso(msg, tipo = 'ok') {
   const t = $('toast'); t.textContent = msg; t.className = 'toast ' + tipo; t.hidden = false;
@@ -37,7 +37,7 @@ function aviso(msg, tipo = 'ok') {
 const mostrar = cual => ['conectar', 'app', 'editor'].forEach(id => $(id).hidden = id !== cual);
 const explicar = e =>
   e.status === 401 ? 'El token no es válido o venció.' :
-  e.status === 403 || e.status === 404 ? 'El token no tiene permiso sobre este repositorio (necesita "Contents: Read and write").' :
+  e.status === 403 || e.status === 404 ? 'El token no tiene permiso sobre este repositorio' :
   e.status === 409 || e.status === 422 ? 'Hubo un conflicto al publicar. Intenta de nuevo.' :
   'No se pudo completar. Revisa tu conexión a internet.';
 
