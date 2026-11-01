@@ -1,75 +1,71 @@
 [
-    {
-        "id": "Gamer_pack_DGX",
-        "nombre": "DGX Gamer Pack",
-        "imagenes": [
-            "img/Gamerpack/DGX_gamerpack.webp"
-        ],
-        "categoria": "Gaming Pack",
-        "precio": "$39.990",
-        
-        "descripcion": "GAMING PACK DGX. Kit Gamer Profesional. Incluye : Mouse, Teclado, Bocinas, Headset y Mousepad.",
-        "caracteristicas": [
-            "Teclado con luces LED de colores, switches rojos ABT, recorrido de tecla de 3.6mm y presión de 55 +/- 10g.",
-            "Mouse de 6 botones, sensibilidad ajustble de 800 a 2400 DPI, vida util de 5 millones de clicks y LED parpadeante de colores.",
-            "Bocinas de 3 W x 2 de potencia, drivers de 36 mm, impedancia de 4 om y alimentacion de 5 V DC."
-        ]
-    },
-    {
-        "id": "Laptop_hp_15",
-        "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
-        "imagenes": [
-            "img/laptop/laptop_hp_detalle.webp",
-            "img/laptop/laptop_hp_principal.webp",
-            "img/laptop/laptop_hp_tapa.webp",
-            "img/laptop/laptop_hp_lateral.webp"
-        ], 
-        "categoria": "Computadores",
-        "precio": "$329.990",
-        
-        "novedad": true,
-        "descripcion": "Laptop HP perfecta para tu productividad en el trabajo, portatil y eficiente.",
-        "caracteristicas": [
-            "Sistema de 64 bits, Windows 11 Home, procesador AMD Ryzen 3 7325U, 8GB RAM, 512GB SSD.",
-            "Nueva, empaquetada, con garantía de 1 año.",
-            "Batería de larga duración, teclado retroiluminado y conectividad Wi-Fi",
-            "15.6 pulgadas Full HD, pantalla antirreflejo, gráficos integrados AMD Radeon."
-        ]
-    },
-    {
-        "id": "Auriculares_01",
-        "nombre": "Gaming Headphone Warhead - Blue Edition",
-        "imagenes": [
-            "img/Audifonos/warhead/warhead_blue_principal.webp",
-            "img/Audifonos/warhead/warhead_blue_lateral.webp",
-            "img/Audifonos/warhead/warhead_blue_informativo.webp"
-        ],
-        "categoria": "Auriculares",
-        "precio": "$24.990",
-        
-        "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
-        "caracteristicas": [
-            "Sonido envolvente 7.1, ideal para juegos y películas.",
-            "Micrófono de alta calidad para llamadas y streaming.",
-            "Diseño ergonómico para un uso prolongado sin incomodidad."
-        ]
-    },
-    {
-        "id": "Auriculares_02",
-        "nombre": "Gaming Headphone Warhead - Red Edition",
-        "imagenes": [
-            "img/Audifonos/warhead/warhead_red_principal.webp",
-            "img/Audifonos/warhead/warhead_red_lateral.webp",
-            "img/Audifonos/warhead/warhead_red_informativo.webp"
-        ],
-        "categoria": "Auriculares",
-        "precio": "$24.990",
-        
-        "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
-        "caracteristicas": [
-            "Sonido envolvente 7.1, ideal para juegos y películas.",
-            "Micrófono de alta calidad para llamadas y streaming.",
-            "Diseño ergonómico para un uso prolongado sin incomodidad."
-        ]
-    }
+  {
+    "id": "Gamer_pack_DGX",
+    "nombre": "DGX Gamer Pack",
+    "imagenes": [
+      "img/Gamerpack/DGX_gamerpack.webp"
+    ],
+    "categoria": "Gaming Pack",
+    "precio": "$39.990",
+    "descripcion": "GAMING PACK DGX. Kit Gamer Profesional. Incluye : Mouse, Teclado, Bocinas, Headset y Mousepad.",
+    "caracteristicas": [
+      "Teclado con luces LED de colores, switches rojos ABT, recorrido de tecla de 3.6mm y presión de 55 +/- 10g.",
+      "Mouse de 6 botones, sensibilidad ajustble de 800 a 2400 DPI, vida util de 5 millones de clicks y LED parpadeante de colores.",
+      "Bocinas de 3 W x 2 de potencia, drivers de 36 mm, impedancia de 4 om y alimentacion de 5 V DC."
+    ]
+  },
+  {
+    "id": "Laptop_hp_15",
+    "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
+    "imagenes": [
+      "img/laptop/laptop_hp_detalle.webp",
+      "img/laptop/laptop_hp_principal.webp",
+      "img/laptop/laptop_hp_tapa.webp",
+      "img/laptop/laptop_hp_lateral.webp"
+    ],
+    "categoria": "Computadores",
+    "precio": 329990,
+    "novedad": true,
+    "descripcion": "Laptop HP perfecta para tu productividad en el trabajo, portatil y eficiente.",
+    "caracteristicas": [
+      "Sistema de 64 bits, Windows 11 Home, procesador AMD Ryzen 3 7325U, 8GB RAM, 512GB SSD.",
+      "Nueva, empaquetada, con garantía de 1 año.",
+      "Batería de larga duración, teclado retroiluminado y conectividad Wi-Fi",
+      "15.6 pulgadas Full HD, pantalla antirreflejo, gráficos integrados AMD Radeon."
+    ]
+  },
+  {
+    "id": "Auriculares_01",
+    "nombre": "Gaming Headphone Warhead - Blue Edition",
+    "imagenes": [
+      "img/Audifonos/warhead/warhead_blue_principal.webp",
+      "img/Audifonos/warhead/warhead_blue_lateral.webp",
+      "img/Audifonos/warhead/warhead_blue_informativo.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": "$24.990",
+    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
+    "caracteristicas": [
+      "Sonido envolvente 7.1, ideal para juegos y películas.",
+      "Micrófono de alta calidad para llamadas y streaming.",
+      "Diseño ergonómico para un uso prolongado sin incomodidad."
+    ]
+  },
+  {
+    "id": "Auriculares_02",
+    "nombre": "Gaming Headphone Warhead - Red Edition",
+    "imagenes": [
+      "img/Audifonos/warhead/warhead_red_principal.webp",
+      "img/Audifonos/warhead/warhead_red_lateral.webp",
+      "img/Audifonos/warhead/warhead_red_informativo.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": "$24.990",
+    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
+    "caracteristicas": [
+      "Sonido envolvente 7.1, ideal para juegos y películas.",
+      "Micrófono de alta calidad para llamadas y streaming.",
+      "Diseño ergonómico para un uso prolongado sin incomodidad."
+    ]
+  }
 ]
