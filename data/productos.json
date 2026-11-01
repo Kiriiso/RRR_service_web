@@ -1,24 +1,6 @@
 [
     {
-        "id": "mouse1",
-        "nombre": "Mouse Prueba 1",
-        "imagenes": [
-            "img/mouse1-principal.jpg",
-            "img/mouse1-detalle.jpg",
-            "img/mouse1-lateral.jpg"
-        ],
-        "categoria": "Mouse",
-        "precio": "$15.990",
-        
-        "descripcion": "Descripción del mouse de prueba 1.",
-        "caracteristicas": [
-            "Característica 1",
-            "Característica 2",
-            "Característica 3"
-        ]
-    },
-    {
-        "id": "Gamer_pack",
+        "id": "Gamer_pack_DGX",
         "nombre": "DGX Gamer Pack",
         "imagenes": [
             "img/Gamerpack/DGX_gamerpack.webp"

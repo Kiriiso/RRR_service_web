@@ -51,11 +51,25 @@ fetch('data/productos.json')
           <a class="btn btn-wa" target="_blank" rel="noopener noreferrer"
              href="https://wa.me/56975530368?text=${encodeURIComponent('Hola, me interesa el producto ' + p.nombre)}">
             <i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+          <div class="compartir">
+            <button class="btn btn-ghost" id="copiar" type="button"><i class="fas fa-link"></i> <span>Copiar enlace</span></button>
+            <a class="btn btn-ghost" target="_blank" rel="noopener noreferrer"
+               href="https://wa.me/?text=${encodeURIComponent(p.nombre + ' - ' + location.href)}"><i class="fab fa-whatsapp"></i> Compartir</a>
+          </div>
           <p class="aviso">Pregúntanos por disponibilidad antes de venir al local.</p>
         </div>
       </div>${relHTML}`;
 
     // Al hacer clic en una miniatura, cambia la foto principal
+    // Botón "Copiar enlace": copia la dirección de esta ficha (si el navegador no deja, la muestra para copiarla a mano)
+    const $copiar = document.getElementById('copiar');
+    $copiar.addEventListener('click', () => {
+      const txt = $copiar.querySelector('span');
+      navigator.clipboard?.writeText(location.href)
+        .then(() => { txt.textContent = '¡Copiado!'; setTimeout(() => txt.textContent = 'Copiar enlace', 2000); })
+        .catch(() => prompt('Copia este enlace:', location.href));
+    });
+
     cont.querySelector('.minis').addEventListener('click', e => {
       const b = e.target.closest('.mini'); if (!b) return;
       document.getElementById('principal').src = b.dataset.src;

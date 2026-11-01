@@ -1,0 +1,33 @@
+/* admin/admin.css · Estilos solo del panel (usa las variables de colores de ../css/main.css) */
+.adm{padding:2rem 0 4rem;display:grid;gap:1.2rem}
+.adm h1{font-size:1.7rem}
+.adm .cotiza{display:grid;gap:1rem;width:100%}
+.adm .cotiza input,.adm .cotiza textarea,.adm .cotiza select{width:100%}
+.adm-top{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
+
+/* Lista de productos */
+.lista{display:grid;gap:.7rem}
+.fila{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;padding:.8rem;border-radius:14px;background:var(--bench);border:1px solid var(--line)}
+.fila img{width:64px;height:64px;object-fit:cover;border-radius:10px;background:var(--bench-2)}
+.fila-info{flex:1;min-width:180px;display:grid}
+.fila-info span{color:var(--muted);font-size:.92rem}
+.fila-acc{display:flex;gap:.5rem;flex-wrap:wrap}
+.mini-btn{padding:.5rem .85rem;border-radius:10px;border:1px solid var(--line);background:var(--bench-2);color:var(--text);font:500 .9rem var(--body);cursor:pointer}
+.mini-btn:hover{border-color:var(--b)}
+.mini-btn.peligro:hover{border-color:var(--r);color:var(--r)}
+.nov{color:var(--g)}
+
+/* Zona para arrastrar fotos y miniaturas */
+.drop{display:grid;place-items:center;gap:.3rem;padding:1.6rem;text-align:center;border:2px dashed var(--line);border-radius:14px;color:var(--muted);cursor:pointer;transition:.2s}
+.drop.sobre,.drop:hover{border-color:var(--b);color:var(--text)}
+.fotos{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.8rem}
+.foto{width:96px}
+.foto img{width:96px;height:96px;object-fit:cover;border-radius:12px;border:2px solid var(--line)}
+.foto.portada img{border-color:var(--g)}
+.foto div{display:flex;gap:.3rem;margin-top:.3rem}
+.check{display:flex!important;gap:.6rem;align-items:center;grid-template-columns:none}
+.check input{width:auto!important}
+
+/* Mensajes (éxito o error) */
+.toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);max-width:min(560px,92vw);padding:.9rem 1.2rem;border-radius:12px;background:var(--bench-2);border:1px solid var(--g);z-index:70}
+.toast.error{border-color:var(--r)}
