@@ -2,8 +2,6 @@
    admin/admin.js · Panel para agregar, editar y borrar productos sin tocar código
    Cómo funciona: lee data/productos.json del repositorio de GitHub, lo modifica
    y publica JSON + fotos en UN solo commit usando la API de GitHub.
-   Necesita un token personal (ver docs/GUIA.md). Tras publicar, GitHub Pages
-   actualiza el sitio en 1 a 2 minutos.
    ===================================================================== */
 
 // ===== CONFIGURACIÓN: cambia aquí si el repositorio cambia de dueño o de nombre =====
@@ -38,7 +36,7 @@ function aviso(msg, tipo = 'ok') {
 }
 const mostrar = cual => ['conectar', 'app', 'editor'].forEach(id => $(id).hidden = id !== cual);
 const explicar = e =>
-  e.status === 401 ? 'El token no es válido o venció. Crea uno nuevo (ver docs/GUIA.md).' :
+  e.status === 401 ? 'El token no es válido o venció.' :
   e.status === 403 || e.status === 404 ? 'El token no tiene permiso sobre este repositorio (necesita "Contents: Read and write").' :
   e.status === 409 || e.status === 422 ? 'Hubo un conflicto al publicar. Intenta de nuevo.' :
   'No se pudo completar. Revisa tu conexión a internet.';
