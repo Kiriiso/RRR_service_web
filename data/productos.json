@@ -39,20 +39,6 @@
     ]
   },
   {
-    "id": "Computadores_01",
-    "nombre": "Laptop Omen",
-    "imagenes": [
-      "img/productos/computadores-01/1.webp"
-    ],
-    "categoria": "Computadores",
-    "precio": 999999,
-    "novedad": true,
-    "descripcion": "Pc increible omen",
-    "caracteristicas": [
-      "mucha ram y fornite"
-    ]
-  },
-  {
     "id": "Gamer_pack_DGX",
     "nombre": "DGX Gamer Pack",
     "imagenes": [
