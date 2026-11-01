@@ -1,28 +1,5 @@
 [
   {
-    "id": "Computadores_02",
-    "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
-    "imagenes": [
-      "img/productos/computadores-02/1.webp",
-      "img/productos/computadores-02/2.webp",
-      "img/productos/computadores-02/3.webp"
-    ],
-    "categoria": "Computadores",
-    "precio": 123,
-    "novedad": false,
-    "descripcion": "dadwd",
-    "caracteristicas": [
-      "wdwda",
-      "ADADwadad",
-      "ADWDADAWDAD",
-      "ADWADAWD",
-      "ADAWDWADD",
-      "ADADADAWDD",
-      "ADWDADWA",
-      "ADAD"
-    ]
-  },
-  {
     "id": "PcGAMERS_01",
     "nombre": "laptop omen 2",
     "imagenes": [
