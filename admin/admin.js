@@ -55,7 +55,7 @@ async function api(ruta, op = {}) {
 const post = (ruta, datos, metodo = 'POST') => api(ruta, { method: metodo, body: JSON.stringify(datos) });
 const cargarLista = async () => JSON.parse(await api(`/contents/${CFG.archivo}?ref=${rama}`, { accept: 'application/vnd.github.raw+json', texto: true }));
 
-// Publica varios archivos en UN solo commit (así el sitio nunca queda a medias)
+// Publica varios archivos en UN solo commit 
 async function publicar(mensaje, archivos) {
   const base = (await api(`/git/ref/heads/${rama}`)).object.sha;
   const commit = await api(`/git/commits/${base}`);
