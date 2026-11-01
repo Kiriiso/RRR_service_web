@@ -1,21 +1,5 @@
 [
   {
-    "id": "PcGAMERS_01",
-    "nombre": "laptop omen 2",
-    "imagenes": [
-      "img/productos/pcgamers-01/1.webp"
-    ],
-    "categoria": "Pc GAMERS",
-    "precio": 1,
-    "novedad": false,
-    "descripcion": "sisis otro",
-    "caracteristicas": [
-      "Me gusta",
-      "es increible",
-      "jajaja"
-    ]
-  },
-  {
     "id": "Gamer_pack_DGX",
     "nombre": "DGX Gamer Pack",
     "imagenes": [
