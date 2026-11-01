@@ -31,3 +31,5 @@
 /* Mensajes (éxito o error) */
 .toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);max-width:min(560px,92vw);padding:.9rem 1.2rem;border-radius:12px;background:var(--bench-2);border:1px solid var(--g);z-index:70}
 .toast.error{border-color:var(--r)}
+
+.adm [hidden]{display:none!important}
