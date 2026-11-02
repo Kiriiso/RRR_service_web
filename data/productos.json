@@ -1,5 +1,97 @@
 [
   {
+    "id": "Cargadores_03",
+    "nombre": "Auriculares Audio Pro AP02041",
+    "imagenes": [
+      "img/productos/cargadores-03/1.webp",
+      "img/productos/cargadores-03/2.webp"
+    ],
+    "categoria": "Cargadores",
+    "precio": 8490,
+    "novedad": false,
+    "descripcion": "Auriculares de gamma media, ideales para el día a día",
+    "caracteristicas": [
+      "Bajos potentes",
+      "Manos libres",
+      "USB tipo C",
+      "Ultra ligero",
+      "Diseño ergonomico"
+    ]
+  },
+  {
+    "id": "Cargadores_02",
+    "nombre": "PowerBank BOROFONE J101B",
+    "imagenes": [
+      "img/productos/cargadores-02/4.webp",
+      "img/productos/cargadores-02/1.webp",
+      "img/productos/cargadores-02/2.webp",
+      "img/productos/cargadores-02/3.webp"
+    ],
+    "categoria": "Cargadores",
+    "precio": 49990,
+    "novedad": true,
+    "descripcion": "Cargador portátil de ALTA capacidad, carga tu dispositivo hasta 6 veces.",
+    "caracteristicas": [
+      "Capacidad de 30.000 mAh para múltiples cargas de dispositivos móviles.",
+      "Carga rápida de 22.5W para mayor eficiencia.",
+      "Tres puertos de carga para conectar múltiples dispositivos.",
+      "Compatible con dispositivos Samsung Galaxy."
+    ]
+  },
+  {
+    "id": "Cargadores_01",
+    "nombre": "Cargador BOROFONE BA81A",
+    "imagenes": [
+      "img/productos/cargadores-01/1.webp",
+      "img/productos/cargadores-01/2.webp"
+    ],
+    "categoria": "Cargadores",
+    "precio": 11990,
+    "novedad": false,
+    "descripcion": "Cargador borofone PD20w de carga rapida",
+    "caracteristicas": [
+      "Carga rapida asegurada",
+      "Sello de de calidad CDC",
+      "Compatibilidad USB-C"
+    ]
+  },
+  {
+    "id": "Auriculares_05",
+    "nombre": "Audifono hoco M97 Stereo Bass - Black",
+    "imagenes": [
+      "img/productos/auriculares-05/1.webp",
+      "img/productos/auriculares-05/2.webp",
+      "img/productos/auriculares-05/3.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 4990,
+    "novedad": false,
+    "descripcion": "Audifono con cable Hoco M97 manos libres negro",
+    "caracteristicas": [
+      "3.5 mm Plug",
+      "Microfono con sonido implecable",
+      "Auriculares manos libres"
+    ]
+  },
+  {
+    "id": "Auriculares_04",
+    "nombre": "Audifono hoco M97 Stereo Bass",
+    "imagenes": [
+      "img/productos/auriculares-04/1.webp",
+      "img/productos/auriculares-04/2.webp",
+      "img/productos/auriculares-04/3.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 4990,
+    "novedad": false,
+    "descripcion": "Auriculares Wire-controlled earphone con microfono",
+    "caracteristicas": [
+      "Diseño Ergonomico",
+      "Cable de 1.2M de largo",
+      "Auriculares manos libres"
+    ]
+  },
+  {
     "id": "Auriculares_03",
     "nombre": "Audifonos hoco M1 Pro",
     "imagenes": [
