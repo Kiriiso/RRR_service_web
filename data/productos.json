@@ -1,5 +1,22 @@
 [
   {
+    "id": "Cargadores_01",
+    "nombre": "Cargador BOROFONE BA81A",
+    "imagenes": [
+      "img/productos/cargadores-01/1.webp",
+      "img/productos/cargadores-01/2.webp"
+    ],
+    "categoria": "Cargadores",
+    "precio": 11990,
+    "novedad": false,
+    "descripcion": "Cargador borofone PD20w de carga rapida",
+    "caracteristicas": [
+      "Carga rapida asegurada",
+      "Sello de de calidad CDC",
+      "Compatibilidad USB-C"
+    ]
+  },
+  {
     "id": "Auriculares_05",
     "nombre": "Audifono hoco M97 Stereo Bass - Black",
     "imagenes": [
