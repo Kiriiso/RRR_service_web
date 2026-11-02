@@ -1,5 +1,23 @@
 [
   {
+    "id": "Auriculares_05",
+    "nombre": "Audifono hoco M97 Stereo Bass - Black",
+    "imagenes": [
+      "img/productos/auriculares-05/1.webp",
+      "img/productos/auriculares-05/2.webp",
+      "img/productos/auriculares-05/3.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 4990,
+    "novedad": false,
+    "descripcion": "Audifono con cable Hoco M97 manos libres negro",
+    "caracteristicas": [
+      "3.5 mm Plug",
+      "Microfono con sonido implecable",
+      "Auriculares manos libres"
+    ]
+  },
+  {
     "id": "Auriculares_04",
     "nombre": "Audifono hoco M97 Stereo Bass",
     "imagenes": [
