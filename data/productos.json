@@ -1,23 +1,5 @@
 [
   {
-    "id": "Cargadores_04",
-    "nombre": "USB converter DH5 4-in-1",
-    "imagenes": [
-      "img/productos/cargadores-04/1.webp",
-      "img/productos/cargadores-04/2.webp",
-      "img/productos/cargadores-04/3.webp"
-    ],
-    "categoria": "Cargadores",
-    "precio": 8990,
-    "novedad": false,
-    "descripcion": "extensible de puertos USB",
-    "caracteristicas": [
-      "Velocidad potente de 480Mbps",
-      "Cable de 0.2m",
-      "Compatible con USB-A"
-    ]
-  },
-  {
     "id": "Cargadores_03",
     "nombre": "Auriculares Audio Pro AP02041",
     "imagenes": [
