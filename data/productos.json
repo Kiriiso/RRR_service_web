@@ -1,30 +1,12 @@
 [
   {
-    "id": "Cargadores_04",
-    "nombre": "USB converter DH5 4-in-1",
-    "imagenes": [
-      "img/productos/cargadores-04/1.webp",
-      "img/productos/cargadores-04/2.webp",
-      "img/productos/cargadores-04/3.webp"
-    ],
-    "categoria": "Cargadores",
-    "precio": 8990,
-    "novedad": false,
-    "descripcion": "extensible de puertos USB",
-    "caracteristicas": [
-      "Velocidad potente de 480Mbps",
-      "Cable de 0.2m",
-      "Compatible con USB-A"
-    ]
-  },
-  {
     "id": "Cargadores_03",
     "nombre": "Auriculares Audio Pro AP02041",
     "imagenes": [
       "img/productos/cargadores-03/1.webp",
       "img/productos/cargadores-03/2.webp"
     ],
-    "categoria": "Cargadores",
+    "categoria": "Auriculares",
     "precio": 8490,
     "novedad": false,
     "descripcion": "Auriculares de gamma media, ideales para el día a día",
@@ -45,7 +27,7 @@
       "img/productos/cargadores-02/2.webp",
       "img/productos/cargadores-02/3.webp"
     ],
-    "categoria": "Cargadores",
+    "categoria": "Cargadores Portatiles (Power Bank)",
     "precio": 49990,
     "novedad": true,
     "descripcion": "Cargador portátil de ALTA capacidad, carga tu dispositivo hasta 6 veces.",
