@@ -1,5 +1,23 @@
 [
   {
+    "id": "Auriculares_04",
+    "nombre": "Audifono hoco M97 Stereo Bass",
+    "imagenes": [
+      "img/productos/auriculares-04/1.webp",
+      "img/productos/auriculares-04/2.webp",
+      "img/productos/auriculares-04/3.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 4990,
+    "novedad": false,
+    "descripcion": "Auriculares Wire-controlled earphone con microfono",
+    "caracteristicas": [
+      "Diseño Ergonomico",
+      "Cable de 1.2M de largo",
+      "Auriculares manos libres"
+    ]
+  },
+  {
     "id": "Auriculares_03",
     "nombre": "Audifonos hoco M1 Pro",
     "imagenes": [
