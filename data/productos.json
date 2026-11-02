@@ -1,5 +1,25 @@
 [
   {
+    "id": "Cargadores_02",
+    "nombre": "PowerBank BOROFONE J101B",
+    "imagenes": [
+      "img/productos/cargadores-02/1.webp",
+      "img/productos/cargadores-02/2.webp",
+      "img/productos/cargadores-02/3.webp",
+      "img/productos/cargadores-02/4.webp"
+    ],
+    "categoria": "Cargadores",
+    "precio": 49990,
+    "novedad": false,
+    "descripcion": "Cargador portátil de ALTA capacidad, carga tu dispositivo hasta 6 veces.",
+    "caracteristicas": [
+      "Capacidad de 30.000 mAh para múltiples cargas de dispositivos móviles.",
+      "Carga rápida de 22.5W para mayor eficiencia.",
+      "Tres puertos de carga para conectar múltiples dispositivos.",
+      "Compatible con dispositivos Samsung Galaxy."
+    ]
+  },
+  {
     "id": "Cargadores_01",
     "nombre": "Cargador BOROFONE BA81A",
     "imagenes": [
