@@ -22,10 +22,10 @@
     "id": "Cargadores_02",
     "nombre": "PowerBank BOROFONE J101B",
     "imagenes": [
+      "img/productos/cargadores-02/4.webp",
       "img/productos/cargadores-02/1.webp",
       "img/productos/cargadores-02/2.webp",
-      "img/productos/cargadores-02/3.webp",
-      "img/productos/cargadores-02/4.webp"
+      "img/productos/cargadores-02/3.webp"
     ],
     "categoria": "Cargadores",
     "precio": 49990,
