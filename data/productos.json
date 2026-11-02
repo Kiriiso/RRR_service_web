@@ -1,5 +1,22 @@
 [
   {
+    "id": "Auriculares_03",
+    "nombre": "Audifonos hoco M1 Pro",
+    "imagenes": [
+      "img/productos/auriculares-03/1.webp",
+      "img/productos/auriculares-03/2.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 11990,
+    "novedad": false,
+    "descripcion": "Auriculares M1 Pro Lightning con microfono y control de volumen",
+    "caracteristicas": [
+      "Altavoz de 12mm con repuesta de 20-20000hz",
+      "Sonido envolvente potente y equilibrado",
+      "Diseño ergonomico y comodo para el día a día."
+    ]
+  },
+  {
     "id": "CargadoresPortatilesPowerBank_02",
     "nombre": "PowerBank BOROFONE BJ56A",
     "imagenes": [
