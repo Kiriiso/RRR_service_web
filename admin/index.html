@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Panel interno: Google no debe listarlo -->
+<meta name="robots" content="noindex,nofollow">
+<title>Panel de productos | RRR Servicio Técnico</title>
+<link rel="icon" href="../img/logorrr.jpeg">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Colores y estilos base del sitio + estilos propios del panel -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand"><img src="../img/logorrr.jpeg" alt="Logo RRR"><span>Panel de productos</span></span>
+  <a class="btn btn-ghost" href="../index.html" target="_blank" rel="noopener">Ver sitio</a>
+</div></header>
+
+<main class="wrap adm">
+
+  <!-- PASO 1: conectar con GitHub (solo la primera vez en cada computador) -->
+  <section id="conectar" class="cotiza" hidden>
+    <h1>Conectar el panel</h1>
+    <p>Pega el codigo. Se guarda solo en este navegador.</p>
+    <input id="token" type="password" placeholder="github_pat_..." autocomplete="off" aria-label="Token de GitHub">
+    <div><button class="btn btn-wa" id="guardar-token" type="button">Conectar</button></div>
+  </section>
+
+  <!-- PASO 2: lista de productos -->
+  <section id="app" hidden>
+    <div class="adm-top">
+      <h1>Productos</h1>
+      <div class="fila-acc">
+        <button class="btn btn-wa" id="nuevo" type="button">+ Nuevo producto</button>
+        <button class="btn btn-ghost" id="salir" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+    <label class="campo buscar"><input id="buscar" type="search" placeholder="Buscar producto…" aria-label="Buscar producto" autocomplete="off"></label>
+    <div id="lista" class="lista"></div>
+  </section>
+
+  <!-- PASO 3: formulario para crear o editar -->
+  <section id="editor" class="cotiza" hidden>
+    <h1 id="titulo-ed">Nuevo producto</h1>
+    <form id="form">
+      <label class="full">Nombre del producto <input id="f-nombre" required maxlength="120"></label>
+      <label class="full">Descripción <textarea id="f-desc" maxlength="400" placeholder="Texto corto que se ve en la tarjeta"></textarea></label>
+      <label class="full">Características (una por línea) <textarea id="f-carac" placeholder="Sonido envolvente 7.1&#10;Micrófono desmontable"></textarea></label>
+      <label>Tipo de producto <select id="categoria"></select></label>
+      <label>Si es nueva, escribe el tipo <input id="cat-nueva" maxlength="40" placeholder="Ej: Televisores" disabled></label>
+      <label>Precio en pesos (sin puntos) <input id="f-precio" type="number" min="1" inputmode="numeric" required placeholder="24990"></label>
+      <label class="check">Marcar como novedad <input id="f-novedad" type="checkbox"></label>
+      <div class="full">
+        <label class="drop" id="drop"><strong>Arrastra las fotos aquí</strong><span>o haz clic para elegirlas. La primera es la portada.</span>
+          <input id="archivos" type="file" accept="image/*" multiple hidden></label>
+        <div id="fotos" class="fotos"></div>
+      </div>
+      <div class="full fila-acc">
+        <button class="btn btn-wa" id="guardar" type="submit">Publicar producto</button>
+        <button class="btn btn-ghost" id="cancelar" type="button">Cancelar</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="admin.js"></script>
+</body>
+</html>

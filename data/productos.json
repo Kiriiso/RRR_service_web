@@ -1,93 +1,126 @@
 [
-    {
-        "id": "mouse1",
-        "nombre": "Mouse Prueba 1",
-        "imagenes": [
-            "img/mouse1-principal.jpg",
-            "img/mouse1-detalle.jpg",
-            "img/mouse1-lateral.jpg"
-        ],
-        "categoria": "Mouse",
-        "precio": "$15.990",
-        
-        "descripcion": "Descripción del mouse de prueba 1.",
-        "caracteristicas": [
-            "Característica 1",
-            "Característica 2",
-            "Característica 3"
-        ]
-    },
-    {
-        "id": "Gamer_pack",
-        "nombre": "DGX Gamer Pack",
-        "imagenes": [
-            "img/Gamerpack/DGX_gamerpack.webp"
-        ],
-        "categoria": "Gaming Pack",
-        "precio": "$39.990",
-        
-        "descripcion": "GAMING PACK DGX. Kit Gamer Profesional. Incluye : Mouse, Teclado, Bocinas, Headset y Mousepad.",
-        "caracteristicas": [
-            "Teclado con luces LED de colores, switches rojos ABT, recorrido de tecla de 3.6mm y presión de 55 +/- 10g.",
-            "Mouse de 6 botones, sensibilidad ajustble de 800 a 2400 DPI, vida util de 5 millones de clicks y LED parpadeante de colores.",
-            "Bocinas de 3 W x 2 de potencia, drivers de 36 mm, impedancia de 4 om y alimentacion de 5 V DC."
-        ]
-    },
-    {
-        "id": "Laptop_hp_15",
-        "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
-        "imagenes": [
-            "img/laptop/laptop_hp_detalle.webp",
-            "img/laptop/laptop_hp_principal.webp",
-            "img/laptop/laptop_hp_tapa.webp",
-            "img/laptop/laptop_hp_lateral.webp"
-        ], 
-        "categoria": "Computadores",
-        "precio": "$329.990",
-        
-        "novedad": true,
-        "descripcion": "Laptop HP perfecta para tu productividad en el trabajo, portatil y eficiente.",
-        "caracteristicas": [
-            "Sistema de 64 bits, Windows 11 Home, procesador AMD Ryzen 3 7325U, 8GB RAM, 512GB SSD.",
-            "Nueva, empaquetada, con garantía de 1 año.",
-            "Batería de larga duración, teclado retroiluminado y conectividad Wi-Fi",
-            "15.6 pulgadas Full HD, pantalla antirreflejo, gráficos integrados AMD Radeon."
-        ]
-    },
-    {
-        "id": "Auriculares_01",
-        "nombre": "Gaming Headphone Warhead - Blue Edition",
-        "imagenes": [
-            "img/Audifonos/warhead/warhead_blue_principal.webp",
-            "img/Audifonos/warhead/warhead_blue_lateral.webp",
-            "img/Audifonos/warhead/warhead_blue_informativo.webp"
-        ],
-        "categoria": "Auriculares",
-        "precio": "$24.990",
-        
-        "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
-        "caracteristicas": [
-            "Sonido envolvente 7.1, ideal para juegos y películas.",
-            "Micrófono de alta calidad para llamadas y streaming.",
-            "Diseño ergonómico para un uso prolongado sin incomodidad."
-        ]
-    },
-    {
-        "id": "Auriculares_02",
-        "nombre": "Gaming Headphone Warhead - Red Edition",
-        "imagenes": [
-            "img/Audifonos/warhead/warhead_red_principal.webp",
-            "img/Audifonos/warhead/warhead_red_lateral.webp",
-            "img/Audifonos/warhead/warhead_red_informativo.webp"
-        ],
-        "categoria": "Auriculares",
-        "precio": "$24.990",
-        
-        "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
-        "caracteristicas": [
-            "Sonido envolvente 7.1, ideal para juegos y películas.",
-            "Micrófono de alta calidad para llamadas y streaming.",
-            "Diseño ergonómico para un uso prolongado sin incomodidad."
-        ]
-    }
+  {
+    "id": "Auriculares_03",
+    "nombre": "Audifonos hoco M1 Pro",
+    "imagenes": [
+      "img/productos/auriculares-03/1.webp",
+      "img/productos/auriculares-03/2.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 11990,
+    "novedad": false,
+    "descripcion": "Auriculares M1 Pro Lightning con microfono y control de volumen",
+    "caracteristicas": [
+      "Altavoz de 12mm con repuesta de 20-20000hz",
+      "Sonido envolvente potente y equilibrado",
+      "Diseño ergonomico y comodo para el día a día."
+    ]
+  },
+  {
+    "id": "CargadoresPortatilesPowerBank_02",
+    "nombre": "PowerBank BOROFONE BJ56A",
+    "imagenes": [
+      "img/productos/cargadoresportatilespowerbank-02/1.webp",
+      "img/productos/cargadoresportatilespowerbank-02/2.webp",
+      "img/productos/cargadoresportatilespowerbank-02/3.webp"
+    ],
+    "categoria": "Cargadores Portatiles (Power Bank)",
+    "precio": 29990,
+    "novedad": false,
+    "descripcion": "Bateria portatil con capacidad de 20000mAh compatible con Micro-USB, USB-C",
+    "caracteristicas": [
+      "Indicador de bateria con luz",
+      "Entrada para Micro-USB y USB-C",
+      "Salida de USB-A (x2) y USB-C"
+    ]
+  },
+  {
+    "id": "CargadoresPortatilesPowerBank_01",
+    "nombre": "PowerBank BOROFONE BJ56",
+    "imagenes": [
+      "img/productos/cargadoresportatilespowerbank-01/1.webp",
+      "img/productos/cargadoresportatilespowerbank-01/2.webp",
+      "img/productos/cargadoresportatilespowerbank-01/3.webp"
+    ],
+    "categoria": "Cargadores Portatiles (Power Bank)",
+    "precio": 19990,
+    "novedad": false,
+    "descripcion": "Bateria portatil con capacidad de 10000mAh compatible con Micro-USB, USB-C",
+    "caracteristicas": [
+      "Indicador de bateria con luz",
+      "Entrada para Micro-USB y USB-C",
+      "Salida de USB-A (x2) y USB-C"
+    ]
+  },
+  {
+    "id": "Gamer_pack_DGX",
+    "nombre": "DGX Gamer Pack",
+    "imagenes": [
+      "img/Gamerpack/DGX_gamerpack.webp"
+    ],
+    "categoria": "Gaming Pack",
+    "precio": "$39.990",
+    "descripcion": "GAMING PACK DGX. Kit Gamer Profesional. Incluye : Mouse, Teclado, Bocinas, Headset y Mousepad.",
+    "caracteristicas": [
+      "Teclado con luces LED de colores, switches rojos ABT, recorrido de tecla de 3.6mm y presión de 55 +/- 10g.",
+      "Mouse de 6 botones, sensibilidad ajustble de 800 a 2400 DPI, vida util de 5 millones de clicks y LED parpadeante de colores.",
+      "Bocinas de 3 W x 2 de potencia, drivers de 36 mm, impedancia de 4 om y alimentacion de 5 V DC."
+    ]
+  },
+  {
+    "id": "Laptop_hp_15",
+    "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
+    "imagenes": [
+      "img/laptop/laptop_hp_detalle.webp",
+      "img/laptop/laptop_hp_principal.webp",
+      "img/laptop/laptop_hp_tapa.webp",
+      "img/laptop/laptop_hp_lateral.webp"
+    ],
+    "categoria": "Computadores",
+    "precio": 329990,
+    "novedad": true,
+    "descripcion": "Laptop HP perfecta para tu productividad en el trabajo, portatil y eficiente.",
+    "caracteristicas": [
+      "Sistema de 64 bits, Windows 11 Home, procesador AMD Ryzen 3 7325U, 8GB RAM, 512GB SSD.",
+      "Nueva, empaquetada, con garantía de 1 año.",
+      "Batería de larga duración, teclado retroiluminado y conectividad Wi-Fi",
+      "15.6 pulgadas Full HD, pantalla antirreflejo, gráficos integrados AMD Radeon."
+    ]
+  },
+  {
+    "id": "Auriculares_01",
+    "nombre": "Gaming Headphone Warhead - Blue Edition",
+    "imagenes": [
+      "img/Audifonos/warhead/warhead_blue_informativo.webp",
+      "img/Audifonos/warhead/warhead_blue_lateral.webp",
+      "img/Audifonos/warhead/warhead_blue_principal.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 24990,
+    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
+    "caracteristicas": [
+      "Sonido envolvente 7.1, ideal para juegos y películas.",
+      "Micrófono de alta calidad para llamadas y streaming.",
+      "Diseño ergonómico para un uso prolongado sin incomodidad."
+    ],
+    "novedad": false
+  },
+  {
+    "id": "Auriculares_02",
+    "nombre": "Gaming Headphone Warhead - Red Edition",
+    "imagenes": [
+      "img/Audifonos/warhead/warhead_red_informativo.webp",
+      "img/Audifonos/warhead/warhead_red_principal.webp",
+      "img/Audifonos/warhead/warhead_red_lateral.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 24990,
+    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
+    "caracteristicas": [
+      "Sonido envolvente 7.1, ideal para juegos y películas.",
+      "Micrófono de alta calidad para llamadas y streaming.",
+      "Diseño ergonómico para un uso prolongado sin incomodidad."
+    ],
+    "novedad": false
+  }
 ]

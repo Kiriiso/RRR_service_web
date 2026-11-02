@@ -53,3 +53,15 @@ if (pasos.length) setTimeout(() => avanzar(0), sinMov ? 0 : 1200);
 
 const anio = document.getElementById('anio');
 if (anio) anio.textContent = new Date().getFullYear();
+
+// ===== FORMULARIO DE COTIZACIÓN: arma el mensaje y abre WhatsApp (el número va en la URL wa.me) =====
+const formCot = document.getElementById('form-cotizacion');
+if (formCot) formCot.addEventListener('submit', e => {
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(formCot));
+  const lineas = ['Hola, quisiera cotizar una reparación.', 'Equipo: ' + d.tipo, 'Marca: ' + d.marca.trim()];
+  if (d.modelo.trim()) lineas.push('Modelo: ' + d.modelo.trim());
+  lineas.push('Falla: ' + d.falla.trim());
+  if (d.nombre.trim()) lineas.push('Mi nombre: ' + d.nombre.trim());
+  window.open('https://wa.me/56975530368?text=' + encodeURIComponent(lineas.join('\n')), '_blank', 'noopener');
+});
