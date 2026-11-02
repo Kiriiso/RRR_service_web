@@ -1,5 +1,23 @@
 [
   {
+    "id": "CargadoresPortatilesPowerBank_02",
+    "nombre": "PowerBank BOROFONE BJ56A",
+    "imagenes": [
+      "img/productos/cargadoresportatilespowerbank-02/1.webp",
+      "img/productos/cargadoresportatilespowerbank-02/2.webp",
+      "img/productos/cargadoresportatilespowerbank-02/3.webp"
+    ],
+    "categoria": "Cargadores Portatiles (Power Bank)",
+    "precio": 29990,
+    "novedad": false,
+    "descripcion": "Bateria portatil con capacidad de 20000mAh compatible con Micro-USB, USB-C",
+    "caracteristicas": [
+      "Indicador de bateria con luz",
+      "Entrada para Micro-USB y USB-C",
+      "Salida de USB-A (x2) y USB-C"
+    ]
+  },
+  {
     "id": "CargadoresPortatilesPowerBank_01",
     "nombre": "PowerBank BOROFONE BJ56",
     "imagenes": [
