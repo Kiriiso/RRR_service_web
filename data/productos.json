@@ -1,5 +1,23 @@
 [
   {
+    "id": "CargadoresPortatilesPowerBank_01",
+    "nombre": "PowerBank BOROFONE BJ56",
+    "imagenes": [
+      "img/productos/cargadoresportatilespowerbank-01/1.webp",
+      "img/productos/cargadoresportatilespowerbank-01/2.webp",
+      "img/productos/cargadoresportatilespowerbank-01/3.webp"
+    ],
+    "categoria": "Cargadores Portatiles (Power Bank)",
+    "precio": 20000,
+    "novedad": false,
+    "descripcion": "Bateria portatil con capacidad de 10000mAh compatible con Micro-USB, USB-C",
+    "caracteristicas": [
+      "Indicador de bateria con luz",
+      "Entrada para Micro-USB y USB-C",
+      "Salida de USB-A (x2) y USB-C"
+    ]
+  },
+  {
     "id": "Gamer_pack_DGX",
     "nombre": "DGX Gamer Pack",
     "imagenes": [
