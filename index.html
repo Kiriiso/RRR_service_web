@@ -132,6 +132,14 @@
   </section>
 
   <!-- SERVICIOS: para agregar uno, copia un <article class="srv"> completo y cambia ícono, título, texto y mensaje de WhatsApp -->
+  <!-- NOVEDADES Y PROMOCIONES: carrusel automático (js/destacados.js lo llena desde data/productos.json) -->
+  <section class="destacados" id="destacados" hidden>
+    <div class="wrap">
+      <h2>Novedades y <span class="rgb-text">promociones</span></h2>
+    </div>
+    <div class="wrap"><div class="dest-cinta"><div class="dest-pista" id="destacados-pista"></div></div></div>
+  </section>
+
   <section class="s" id="servicios">
     <div class="wrap">
       <div class="s-head">
@@ -261,5 +269,6 @@
 
 <!-- SCRIPT compartido (menú móvil, animaciones, carga, abierto/cerrado) -->
 <script src="js/main.js" defer></script>
+<script src="js/destacados.js" defer></script>
 </body>
 </html>
