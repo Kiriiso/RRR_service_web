@@ -1,5 +1,26 @@
 [
   {
+    "id": "CoolingPad_01",
+    "nombre": "Cooling Pad - Gamer (Azul)",
+    "imagenes": [
+      "img/productos/coolingpad-01/1.webp",
+      "img/productos/coolingpad-01/2.webp",
+      "img/productos/coolingpad-01/3.webp"
+    ],
+    "categoria": "Cooling Pad",
+    "precio": 24990,
+    "novedad": true,
+    "descripcion": "Base refrigerante (cooling pad) marca ReptileX - RX0025",
+    "caracteristicas": [
+      "Refrigeracion para computadores gamers",
+      "6 Ventiladores de alto rendimiento y configurables",
+      "3 Velocidad configurables",
+      "Capacidad de elevarse en angulo de 45 grados",
+      "Compatibilidad con USB",
+      "Luces LED gamer Azules"
+    ]
+  },
+  {
     "id": "Cargadores_03",
     "nombre": "Auriculares Audio Pro AP02041",
     "imagenes": [
@@ -163,13 +184,15 @@
     "id": "Laptop_hp_15",
     "nombre": "Laptop HP con AMD Ryzen 3 7325U, 8GB RAM, 500GB SSD, Windows 11 Home",
     "imagenes": [
+      "img/productos/laptop-hp-15/1.webp",
+      "img/productos/laptop-hp-15/2.webp",
       "img/laptop/laptop_hp_detalle.webp",
       "img/laptop/laptop_hp_principal.webp",
       "img/laptop/laptop_hp_tapa.webp",
       "img/laptop/laptop_hp_lateral.webp"
     ],
     "categoria": "Computadores",
-    "precio": 329990,
+    "precio": 349990,
     "novedad": true,
     "descripcion": "Laptop HP perfecta para tu productividad en el trabajo, portatil y eficiente.",
     "caracteristicas": [
