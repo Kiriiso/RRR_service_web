@@ -1,5 +1,26 @@
 [
   {
+    "id": "CoolingPad_01",
+    "nombre": "Cooling Pad - Gamer (Azul)",
+    "imagenes": [
+      "img/productos/coolingpad-01/1.webp",
+      "img/productos/coolingpad-01/2.webp",
+      "img/productos/coolingpad-01/3.webp"
+    ],
+    "categoria": "Cooling Pad",
+    "precio": 24990,
+    "novedad": true,
+    "descripcion": "Base refrigerante (cooling pad) marca ReptileX - RX0025",
+    "caracteristicas": [
+      "Refrigeracion para computadores gamers",
+      "6 Ventiladores de alto rendimiento y configurables",
+      "3 Velocidad configurables",
+      "Capacidad de elevarse en angulo de 45 grados",
+      "Compatibilidad con USB",
+      "Luces LED gamer Azules"
+    ]
+  },
+  {
     "id": "Cargadores_03",
     "nombre": "Auriculares Audio Pro AP02041",
     "imagenes": [
