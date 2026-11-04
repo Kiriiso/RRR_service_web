@@ -112,6 +112,24 @@
     "novedad": false
   },
   {
+    "id": "Auriculares_02",
+    "nombre": "Gaming Headphone Warhead - Red Edition",
+    "imagenes": [
+      "img/Audifonos/warhead/warhead_red_informativo.webp",
+      "img/Audifonos/warhead/warhead_red_principal.webp",
+      "img/Audifonos/warhead/warhead_red_lateral.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 24990,
+    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
+    "caracteristicas": [
+      "Sonido envolvente 7.1, ideal para juegos y películas.",
+      "Micrófono de alta calidad para llamadas y streaming.",
+      "Diseño ergonómico para un uso prolongado sin incomodidad."
+    ],
+    "novedad": false
+  },
+  {
     "id": "Cargadores_01",
     "nombre": "Cargador BOROFONE BA81A",
     "imagenes": [
@@ -235,23 +253,5 @@
       "Entrada para Micro-USB y USB-C",
       "Salida de USB-A (x2) y USB-C"
     ]
-  },
-  {
-    "id": "Auriculares_02",
-    "nombre": "Gaming Headphone Warhead - Red Edition",
-    "imagenes": [
-      "img/Audifonos/warhead/warhead_red_informativo.webp",
-      "img/Audifonos/warhead/warhead_red_principal.webp",
-      "img/Audifonos/warhead/warhead_red_lateral.webp"
-    ],
-    "categoria": "Auriculares",
-    "precio": 24990,
-    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
-    "caracteristicas": [
-      "Sonido envolvente 7.1, ideal para juegos y películas.",
-      "Micrófono de alta calidad para llamadas y streaming.",
-      "Diseño ergonómico para un uso prolongado sin incomodidad."
-    ],
-    "novedad": false
   }
 ]
