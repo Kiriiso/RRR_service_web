@@ -1,5 +1,21 @@
 [
   {
+    "id": "Servicios_01",
+    "nombre": "Lamina hidrogel",
+    "imagenes": [
+      "img/productos/servicios-01/1.webp"
+    ],
+    "categoria": "Servicios",
+    "precio": 4990,
+    "novedad": false,
+    "promocion": true,
+    "promoTexto": "-20%",
+    "descripcion": "lamina hidrogel",
+    "caracteristicas": [
+      "protege"
+    ]
+  },
+  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
