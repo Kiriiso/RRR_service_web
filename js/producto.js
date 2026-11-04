@@ -13,6 +13,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': 
 const clp = n => typeof n === 'string' ? n : new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(n);
 // Un producto es novedad si en el JSON tiene "novedad": true
 const esNovedad = p => p.novedad === true || p.novedad === 'true';
+const esPromo = p => p.promocion === true || p.promocion === 'true';
+const badgePromo = p => esPromo(p) ? `<span class="badge-promo">${esc(p.promoTexto || 'Promoción')}</span>` : '';
 // Enlace "Volver a accesorios"
 const volver = '<a class="volver" href="catalogo.html"><i class="fas fa-arrow-left"></i> Volver a accesorios</a>';
 
@@ -33,7 +35,7 @@ fetch('data/productos.json')
     // Productos relacionados: misma categoría, distinto id, máximo 4
     const rel = lista.filter(x => x.categoria === p.categoria && String(x.id) !== id).slice(0, 4);
     const relHTML = rel.length ? `<h2 class="rel-t">Más en ${esc(p.categoria)}</h2><div class="grid-prod">${rel.map(x => `
-      <article class="prod"><div class="prod-img">${esNovedad(x) ? '<span class="badge-nuevo">Novedad</span>' : ''}<img src="${esc(x.imagenes?.[0])}" alt="${esc(x.nombre)}" loading="lazy"></div>
+      <article class="prod"><div class="prod-img">${esNovedad(x) ? '<span class="badge-nuevo">Novedad</span>' : ''}${badgePromo(x)}<img src="${esc(x.imagenes?.[0])}" alt="${esc(x.nombre)}" loading="lazy"></div>
       <div class="prod-body"><h3><a href="producto.html?id=${encodeURIComponent(x.id)}">${esc(x.nombre)}</a></h3><p class="precio">${esc(clp(x.precio))}</p></div></article>`).join('')}</div>` : '';
 
     cont.innerHTML = volver + `
@@ -43,7 +45,7 @@ fetch('data/productos.json')
           <div class="minis">${minis}</div>
         </div>
         <div class="info">
-          <span class="prod-cat">${esc(p.categoria)}</span>${esNovedad(p) ? '<span class="badge-nuevo">Novedad</span>' : ''}
+          <span class="prod-cat">${esc(p.categoria)}</span>${esNovedad(p) ? '<span class="badge-nuevo">Novedad</span>' : ''}${badgePromo(p)}
           <h1>${esc(p.nombre)}</h1>
           <p class="precio">${esc(clp(p.precio))}</p>
           <p class="desc">${esc(p.descripcion)}</p>

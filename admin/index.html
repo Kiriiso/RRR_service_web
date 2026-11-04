@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="admin.css">
-<link rel="stylesheet" href="admin-orden.css">
 </head>
 <body>
 <header class="top"><div class="wrap nav">
@@ -54,6 +53,8 @@
       <label>Si es nueva, escribe el tipo <input id="cat-nueva" maxlength="40" placeholder="Ej: Televisores" disabled></label>
       <label>Precio en pesos (sin puntos) <input id="f-precio" type="number" min="1" inputmode="numeric" required placeholder="24990"></label>
       <label class="check">Marcar como novedad <input id="f-novedad" type="checkbox"></label>
+      <label class="check">En promoción <input id="f-promo" type="checkbox"></label>
+      <label>Nombre de la promoción <input id="f-promo-txt" maxlength="20" placeholder="Ej: 2x1, -20%" disabled></label>
       <div class="full">
         <label class="drop" id="drop"><strong>Arrastra las fotos aquí</strong><span>o haz clic para elegirlas. La primera es la portada.</span>
           <input id="archivos" type="file" accept="image/*" multiple hidden></label>

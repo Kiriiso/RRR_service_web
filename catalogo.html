@@ -62,11 +62,12 @@
         <label class="campo buscar"><i class="fas fa-search" aria-hidden="true"></i><input id="q" type="search" placeholder="Buscar por nombre…" aria-label="Buscar por nombre" autocomplete="off"></label>
         <label class="campo"><span>Precio</span><input id="min" type="number" min="0" inputmode="numeric" placeholder="Mín" aria-label="Precio mínimo"><span>–</span><input id="max" type="number" min="0" inputmode="numeric" placeholder="Máx" aria-label="Precio máximo"></label>
         <label class="campo"><span>Ordenar</span><select id="orden" aria-label="Ordenar productos">
-          <option value="relevancia">Por defecto</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option><option value="nuevo">Novedades primero</option></select></label>
+          <option value="relevancia">Por defecto</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select></label>
       </div>
       <!-- CHIPS: botón Novedades (producto con "novedad": true) y categorías (se crean solas desde productos.json) -->
       <div class="filtros" role="group" aria-label="Filtrar por categoría">
         <button class="chip chip-nuevo" id="nuevo" aria-pressed="false"><i class="fas fa-star" aria-hidden="true"></i>Novedades</button>
+        <button class="chip chip-promo" id="promo" aria-pressed="false"><i class="fas fa-tags" aria-hidden="true"></i>Promociones</button>
         <span id="cats" style="display:contents"></span>
       </div>
       <!-- Contador de resultados y botón Limpiar filtros -->

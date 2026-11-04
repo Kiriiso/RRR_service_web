@@ -18,16 +18,19 @@ const clp = n => typeof n === 'string' ? n : new Intl.NumberFormat('es-CL', { st
 // Un producto es novedad si en el JSON tiene "novedad": true
 const esNovedad = p => p.novedad === true || p.novedad === 'true';
 
+// Un producto está en promoción si tiene "promocion": true (el texto corto va en "promoTexto", ej. 2x1)
+const esPromo = p => p.promocion === true || p.promocion === 'true';
+
 // Estado: productos cargados y filtros actuales (base = valores por defecto)
 let productos = [];
-const base = { q: '', cat: 'Todos', min: '', max: '', nuevo: false, orden: 'relevancia' };
+const base = { q: '', cat: 'Todos', min: '', max: '', nuevo: false, promo: false, orden: 'relevancia' };
 const estado = { ...base };
 
 // Leer filtros desde la URL (para poder compartir o volver desde producto.html)
 const u = new URLSearchParams(location.search);
 estado.q = u.get('q') ?? ''; estado.cat = u.get('cat') ?? 'Todos';
 estado.min = u.get('min') ?? ''; estado.max = u.get('max') ?? '';
-estado.nuevo = u.get('nuevo') === '1'; estado.orden = u.get('orden') ?? 'relevancia';
+estado.nuevo = u.get('nuevo') === '1'; estado.promo = u.get('promo') === '1'; estado.orden = u.get('orden') ?? 'relevancia';
 
 // Devuelve solo los productos que cumplen TODOS los filtros activos, ya ordenados
 function filtrar() {
@@ -39,11 +42,13 @@ function filtrar() {
     return (!q || norm(p.nombre).includes(q) || norm(p.categoria).includes(q))
       && (estado.cat === 'Todos' || p.categoria === estado.cat)
       && pr >= min && pr <= max
-      && (!estado.nuevo || esNovedad(p));
+      && (!estado.nuevo || esNovedad(p))
+      && (!estado.promo || esPromo(p));
   });
   if (estado.orden === 'asc') lista.sort((a, b) => num(a.precio) - num(b.precio));
   if (estado.orden === 'desc') lista.sort((a, b) => num(b.precio) - num(a.precio));
-  if (estado.orden === 'nuevo') lista.sort((a, b) => esNovedad(b) - esNovedad(a));
+  // Las novedades siempre salen primero (el sort es estable: se mantiene el orden dentro de cada grupo)
+  lista.sort((a, b) => esNovedad(b) - esNovedad(a));
   return lista;
 }
 
@@ -55,10 +60,11 @@ function pintar() {
   cuenta.textContent = lista.length + (lista.length === 1 ? ' accesorio' : ' accesorios');
   cats.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === estado.cat));
   $('nuevo').setAttribute('aria-pressed', estado.nuevo);
+  $('promo').setAttribute('aria-pressed', estado.promo);
 
   grid.innerHTML = lista.map(p => `
     <article class="prod">
-      <div class="prod-img">${esNovedad(p) ? '<span class="badge-nuevo">Novedad</span>' : ''}
+      <div class="prod-img">${esNovedad(p) ? '<span class="badge-nuevo">Novedad</span>' : ''}${esPromo(p) ? `<span class="badge-promo">${esc(p.promoTexto || 'Promoción')}</span>` : ''}
         <img src="${esc(p.imagenes?.[0])}" alt="${esc(p.nombre)}" loading="lazy"></div>
       <div class="prod-body">
         <span class="prod-cat">${esc(p.categoria)}</span>
@@ -77,6 +83,7 @@ function pintar() {
   if (estado.min !== '') p.set('min', estado.min);
   if (estado.max !== '') p.set('max', estado.max);
   if (estado.nuevo) p.set('nuevo', '1');
+  if (estado.promo) p.set('promo', '1');
   if (estado.orden !== 'relevancia') p.set('orden', estado.orden);
   history.replaceState(null, '', p.toString() ? '?' + p : location.pathname);
 }
@@ -108,5 +115,6 @@ $('min').addEventListener('input', e => { estado.min = e.target.value; pintar();
 $('max').addEventListener('input', e => { estado.max = e.target.value; pintar(); });
 $('orden').addEventListener('change', e => { estado.orden = e.target.value; pintar(); });
 $('nuevo').addEventListener('click', () => { estado.nuevo = !estado.nuevo; pintar(); });
+$('promo').addEventListener('click', () => { estado.promo = !estado.promo; pintar(); });
 cats.addEventListener('click', e => { const b = e.target.closest('.chip'); if (b) { estado.cat = b.dataset.cat; pintar(); } });
 limpiar.addEventListener('click', () => { Object.assign(estado, base); sincronizarControles(); pintar(); });

@@ -19,6 +19,7 @@ const sinTildes = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]
 const slug = s => sinTildes(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const num = v => typeof v === 'number' ? v : parseInt(String(v).replace(/\D/g, ''), 10) || 0;
 const clp = n => '$' + num(n).toLocaleString('es-CL');
+const esPromo = p => p.promocion === true || p.promocion === 'true';
 const esNov = p => p.novedad === true || p.novedad === 'true';
 const utf8b64 = txt => { let bin = ''; new TextEncoder().encode(txt).forEach(b => bin += String.fromCharCode(b)); return btoa(bin); };
 const blobB64 = blob => new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.readAsDataURL(blob); });
@@ -105,7 +106,7 @@ function pintarLista() {
       ${ordenable ? '<span class="asa" title="Arrastra para mover">⠿</span>' : ''}
       <img src="../${esc(p.imagenes?.[0])}" alt="">
       <div class="fila-info"><strong>${esc(p.nombre)}</strong>
-        <span>${esc(p.categoria)} · ${esc(clp(p.precio))}${esNov(p) ? ' · <b class="nov">Novedad</b>' : ''}</span></div>
+        <span>${esc(p.categoria)} · ${esc(clp(p.precio))}${esNov(p) ? ' · <b class="nov">Novedad</b>' : ''}${esPromo(p) ? ` · <b class="promo">${esc(p.promoTexto || 'Promoción')}</b>` : ''}</span></div>
       <div class="fila-acc">
         ${ordenable ? `
         <button class="mini-btn" data-acc="top" title="Mover al principio" ${i === 0 ? 'disabled' : ''}>⤒</button>
@@ -182,10 +183,12 @@ function abrirEditor(p) {
   $('f-nombre').value = p?.nombre ?? ''; $('f-desc').value = p?.descripcion ?? '';
   $('f-carac').value = (p?.caracteristicas ?? []).join('\n');
   $('f-precio').value = p ? num(p.precio) : ''; $('f-novedad').checked = p ? esNov(p) : false;
+  $('f-promo').checked = p ? esPromo(p) : false; $('f-promo-txt').value = p?.promoTexto ?? ''; $('f-promo-txt').disabled = !$('f-promo').checked;
   fotos = (p?.imagenes ?? []).map(path => ({ path, url: '../' + path }));
   pintarFotos(); mostrar('editor');
 }
 $('nuevo').addEventListener('click', () => { if (!bloqueado()) abrirEditor(null); });
+$('f-promo').addEventListener('change', e => { $('f-promo-txt').disabled = !e.target.checked; });
 $('cancelar').addEventListener('click', () => mostrar('app'));
 $('categoria').addEventListener('change', e => { $('cat-nueva').disabled = e.target.value !== '__nueva'; });
 
@@ -247,6 +250,7 @@ $('form').addEventListener('submit', async e => {
       archivos.push({ path, base64: await blobB64(f.blob) });
     }
     const prod = { ...previo, id, nombre, imagenes, categoria: cat, precio, novedad: $('f-novedad').checked,
+      promocion: $('f-promo').checked, promoTexto: $('f-promo').checked ? $('f-promo-txt').value.trim() : '',
       descripcion: $('f-desc').value.trim(), caracteristicas: $('f-carac').value.split('\n').map(s => s.trim()).filter(Boolean) };
     // Productos nuevos al principio. Para ponerlos al final: [...lista, prod]
     return previo ? lista.map(x => x.id === id ? prod : x) : [prod, ...lista];
