@@ -1,16 +1,15 @@
 /* =====================================================================
-   admin/admin.js · Panel para agregar, editar y borrar productos sin tocar código
-   Cómo funciona: lee data/productos.json del repositorio de GitHub, lo modifica
+   admin/admin.js · Panel para agregar, editar, ordenar y borrar productos
+   Lee data/productos.json del repositorio de GitHub, lo modifica
    y publica JSON + fotos en UN solo commit usando la API de GitHub.
    ===================================================================== */
 
-// ===== CONFIGURACIÓN: cambia aquí si el repositorio cambia de dueño o de nombre =====
 const CFG = {
   owner: 'kiriiso',
   repo: 'RRR_service_web',
-  archivo: 'data/productos.json',   // dónde viven los productos
-  carpetaImg: 'img/productos',      // dónde se guardan las fotos nuevas
-  anchoMax: 1200                    // las fotos se reducen a este ancho máximo (px)
+  archivo: 'data/productos.json',
+  carpetaImg: 'img/productos',
+  anchoMax: 1200
 };
 
 // ===== UTILIDADES =====
@@ -25,15 +24,17 @@ const utf8b64 = txt => { let bin = ''; new TextEncoder().encode(txt).forEach(b =
 const blobB64 = blob => new Promise(res => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.readAsDataURL(blob); });
 
 let token = localStorage.getItem('rrr_token') || '';
-let rama = '';         
-let productos = [];     // lista actual de productos
-let editando = null;    // (null = producto nuevo)
-let fotos = [];         // fotos del formulario
+let rama = '';
+let productos = [];
+let editando = null;
+let fotos = [];
+let ordenSucio = false; // hay cambios de orden sin publicar
 
 function aviso(msg, tipo = 'ok') {
   const t = $('toast'); t.textContent = msg; t.className = 'toast ' + tipo; t.hidden = false;
   clearTimeout(aviso.t); if (tipo !== 'error') aviso.t = setTimeout(() => t.hidden = true, 7000);
 }
+const bloqueado = () => ordenSucio && (aviso('Primero guarda o descarta el cambio de orden.', 'error'), true);
 const mostrar = cual => ['conectar', 'app', 'editor'].forEach(id => $(id).hidden = id !== cual);
 const explicar = e =>
   e.status === 401 ? 'El token no es válido o venció.' :
@@ -53,7 +54,6 @@ async function api(ruta, op = {}) {
 const post = (ruta, datos, metodo = 'POST') => api(ruta, { method: metodo, body: JSON.stringify(datos) });
 const cargarLista = async () => JSON.parse(await api(`/contents/${CFG.archivo}?ref=${rama}`, { accept: 'application/vnd.github.raw+json', texto: true }));
 
-// Publica varios archivos en UN solo commit 
 async function publicar(mensaje, archivos) {
   const base = (await api(`/git/ref/heads/${rama}`)).object.sha;
   const commit = await api(`/git/commits/${base}`);
@@ -68,7 +68,6 @@ async function publicar(mensaje, archivos) {
 }
 
 // Aplica un cambio sobre la lista MÁS RECIENTE del repositorio y lo publica.
-// fn(lista, archivos) devuelve la lista nueva (y puede agregar fotos a "archivos").
 async function modificar(fn, mensaje) {
   try {
     const lista = await cargarLista(), archivos = [];
@@ -100,12 +99,18 @@ $('salir').addEventListener('click', () => { localStorage.removeItem('rrr_token'
 function pintarLista() {
   const q = sinTildes($('buscar').value).toLowerCase();
   const items = productos.filter(p => !q || sinTildes(p.nombre + ' ' + p.categoria).toLowerCase().includes(q));
-  $('lista').innerHTML = items.map(p => `
-    <article class="fila" data-id="${esc(p.id)}">
+  const ordenable = !q; // con búsqueda activa no se puede ordenar
+  $('lista').innerHTML = items.map((p, i) => `
+    <article class="fila" data-id="${esc(p.id)}" ${ordenable ? 'draggable="true"' : ''}>
+      ${ordenable ? '<span class="asa" title="Arrastra para mover">⠿</span>' : ''}
       <img src="../${esc(p.imagenes?.[0])}" alt="">
       <div class="fila-info"><strong>${esc(p.nombre)}</strong>
         <span>${esc(p.categoria)} · ${esc(clp(p.precio))}${esNov(p) ? ' · <b class="nov">Novedad</b>' : ''}</span></div>
       <div class="fila-acc">
+        ${ordenable ? `
+        <button class="mini-btn" data-acc="top" title="Mover al principio" ${i === 0 ? 'disabled' : ''}>⤒</button>
+        <button class="mini-btn" data-acc="up" title="Subir" ${i === 0 ? 'disabled' : ''}>↑</button>
+        <button class="mini-btn" data-acc="down" title="Bajar" ${i === items.length - 1 ? 'disabled' : ''}>↓</button>` : ''}
         <button class="mini-btn" data-acc="nov">${esNov(p) ? 'Quitar novedad' : 'Marcar novedad'}</button>
         <button class="mini-btn" data-acc="edit">Editar</button>
         <button class="mini-btn peligro" data-acc="del">Eliminar</button>
@@ -113,13 +118,57 @@ function pintarLista() {
     </article>`).join('') || '<p>No hay productos que coincidan.</p>';
 }
 $('buscar').addEventListener('input', pintarLista);
-$('lista').addEventListener('click', async e => {
+
+function moverA(id, destino) {
+  const i = productos.findIndex(x => x.id === id);
+  destino = Math.max(0, Math.min(productos.length - 1, destino));
+  if (i < 0 || i === destino) return;
+  productos.splice(destino, 0, productos.splice(i, 1)[0]);
+  ordenSucio = true; $('barra-orden').hidden = false; pintarLista();
+}
+
+$('lista').addEventListener('click', e => {
   const b = e.target.closest('[data-acc]'); if (!b) return;
   const id = b.closest('.fila').dataset.id, p = productos.find(x => x.id === id);
-  if (b.dataset.acc === 'edit') abrirEditor(p);
-  if (b.dataset.acc === 'nov') modificar(l => l.map(x => x.id === id ? { ...x, novedad: !esNov(x) } : x), `Panel: novedad de ${id}`);
-  if (b.dataset.acc === 'del' && confirm(`¿Eliminar "${p.nombre}" del catálogo?`))
+  const i = productos.findIndex(x => x.id === id), acc = b.dataset.acc;
+  if (acc === 'top') return moverA(id, 0);
+  if (acc === 'up') return moverA(id, i - 1);
+  if (acc === 'down') return moverA(id, i + 1);
+  if (bloqueado()) return;
+  if (acc === 'edit') abrirEditor(p);
+  if (acc === 'nov') modificar(l => l.map(x => x.id === id ? { ...x, novedad: !esNov(x) } : x), `Panel: novedad de ${id}`);
+  if (acc === 'del' && confirm(`¿Eliminar "${p.nombre}" del catálogo?`))
     modificar(l => l.filter(x => x.id !== id), `Panel: eliminar ${id}`);
+});
+
+// Arrastrar y soltar para ordenar
+let arrastrando = null;
+$('lista').addEventListener('dragstart', e => {
+  const f = e.target.closest('.fila'); if (!f) return;
+  arrastrando = f.dataset.id; f.classList.add('arrastrando'); e.dataTransfer.effectAllowed = 'move';
+});
+$('lista').addEventListener('dragend', () => { arrastrando = null; pintarLista(); });
+$('lista').addEventListener('dragover', e => { if (arrastrando) e.preventDefault(); });
+$('lista').addEventListener('drop', e => {
+  const f = e.target.closest('.fila'); if (!f || !arrastrando) return;
+  e.preventDefault();
+  moverA(arrastrando, productos.findIndex(x => x.id === f.dataset.id));
+});
+
+// Guardar o descartar el nuevo orden
+$('guardar-orden').addEventListener('click', async () => {
+  const ids = productos.map(p => p.id);
+  const ok = await modificar(lista => {
+    const mapa = new Map(lista.map(p => [p.id, p]));
+    const ordenados = ids.filter(id => mapa.has(id)).map(id => mapa.get(id));
+    const resto = lista.filter(p => !ids.includes(p.id)); // por si alguien agregó algo mientras tanto
+    return [...resto, ...ordenados];
+  }, 'Panel: cambiar orden de productos');
+  if (ok) { ordenSucio = false; $('barra-orden').hidden = true; }
+});
+$('descartar-orden').addEventListener('click', async () => {
+  try { productos = await cargarLista(); } catch (e) { return aviso(explicar(e), 'error'); }
+  ordenSucio = false; $('barra-orden').hidden = true; pintarLista();
 });
 
 // ===== FORMULARIO =====
@@ -136,11 +185,10 @@ function abrirEditor(p) {
   fotos = (p?.imagenes ?? []).map(path => ({ path, url: '../' + path }));
   pintarFotos(); mostrar('editor');
 }
-$('nuevo').addEventListener('click', () => abrirEditor(null));
+$('nuevo').addEventListener('click', () => { if (!bloqueado()) abrirEditor(null); });
 $('cancelar').addEventListener('click', () => mostrar('app'));
 $('categoria').addEventListener('change', e => { $('cat-nueva').disabled = e.target.value !== '__nueva'; });
 
-// Convierte la foto a WebP y la reduce (más liviana = el sitio carga más rápido)
 async function aWebp(file) {
   const bmp = await createImageBitmap(file), k = Math.min(1, CFG.anchoMax / Math.max(bmp.width, bmp.height));
   const c = document.createElement('canvas'); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
@@ -173,7 +221,6 @@ const drop = $('drop');
 drop.addEventListener('drop', e => { e.preventDefault(); agregarFotos([...e.dataTransfer.files]); });
 $('archivos').addEventListener('change', e => { agregarFotos([...e.target.files]); e.target.value = ''; });
 
-// Id nuevo con el mismo estilo de siempre: Categoria_01, Categoria_02…
 function nuevoId(lista, cat) {
   const pre = sinTildes(cat).replace(/[^A-Za-z0-9]/g, '') || 'Producto';
   const usados = lista.map(p => String(p.id).match(new RegExp('^' + pre + '_(\\d+)$'))).filter(Boolean).map(m => +m[1]);
@@ -194,14 +241,14 @@ $('form').addEventListener('submit', async e => {
     const carpeta = `${CFG.carpetaImg}/${slug(id)}`;
     const usados = new Set(fotos.filter(f => f.path).map(f => f.path)), imagenes = [];
     for (const f of fotos) {
-      if (f.path) { imagenes.push(f.path); continue; }     // foto que ya estaba en el sitio
+      if (f.path) { imagenes.push(f.path); continue; }
       let n = 1; while (usados.has(`${carpeta}/${n}.${f.ext}`)) n++;
       const path = `${carpeta}/${n}.${f.ext}`; usados.add(path); imagenes.push(path);
       archivos.push({ path, base64: await blobB64(f.blob) });
     }
     const prod = { ...previo, id, nombre, imagenes, categoria: cat, precio, novedad: $('f-novedad').checked,
       descripcion: $('f-desc').value.trim(), caracteristicas: $('f-carac').value.split('\n').map(s => s.trim()).filter(Boolean) };
-    // Los productos nuevos van AL PRINCIPIO de la lista (para que salgan primero). Para ponerlos al final: [...lista, prod]
+    // Productos nuevos al principio. Para ponerlos al final: [...lista, prod]
     return previo ? lista.map(x => x.id === id ? prod : x) : [prod, ...lista];
   }, `Panel: ${editando ? 'editar' : 'agregar'} ${nombre}`);
 

@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Panel interno: Google no debe listarlo -->
 <meta name="robots" content="noindex,nofollow">
 <title>Panel de productos | RRR Servicio Técnico</title>
 <link rel="icon" href="../img/logorrr.png" sizes="48x48">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Colores y estilos base del sitio + estilos propios del panel -->
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="admin.css">
+<link rel="stylesheet" href="admin-orden.css">
 </head>
 <body>
 <header class="top"><div class="wrap nav">
@@ -20,7 +19,6 @@
 
 <main class="wrap adm">
 
-  <!-- PASO 1: conectar con GitHub (solo la primera vez en cada computador) -->
   <section id="conectar" class="cotiza" hidden>
     <h1>Conectar el panel</h1>
     <p>Pega el codigo. Se guarda solo en este navegador.</p>
@@ -28,7 +26,6 @@
     <div><button class="btn btn-wa" id="guardar-token" type="button">Conectar</button></div>
   </section>
 
-  <!-- PASO 2: lista de productos -->
   <section id="app" hidden>
     <div class="adm-top">
       <h1>Productos</h1>
@@ -38,10 +35,15 @@
       </div>
     </div>
     <label class="campo buscar"><input id="buscar" type="search" placeholder="Buscar producto…" aria-label="Buscar producto" autocomplete="off"></label>
+    <div id="barra-orden" class="barra-orden" hidden>
+      <span>Cambiaste el orden. Aún no está publicado.</span>
+      <button class="btn btn-wa" id="guardar-orden" type="button">Guardar orden</button>
+      <button class="btn btn-ghost" id="descartar-orden" type="button">Descartar</button>
+    </div>
+    <p class="ayuda-orden">Arrastra los productos o usa las flechas para ordenarlos (se desactiva mientras buscas). Las novedades siempre salen primero en la tienda.</p>
     <div id="lista" class="lista"></div>
   </section>
 
-  <!-- PASO 3: formulario para crear o editar -->
   <section id="editor" class="cotiza" hidden>
     <h1 id="titulo-ed">Nuevo producto</h1>
     <form id="form">
