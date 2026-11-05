@@ -1,5 +1,24 @@
 [
   {
+    "id": "Servicios_02",
+    "nombre": "Lamina de Hidrogel Antiespia",
+    "imagenes": [
+      "img/productos/servicios-02/1.webp",
+      "img/productos/servicios-02/2.webp"
+    ],
+    "categoria": "Servicios",
+    "precio": 9990,
+    "novedad": false,
+    "promocion": true,
+    "promoTexto": "20%",
+    "descripcion": "Lamina protectora para tu telefono antiespia, resguarda tu privacidad",
+    "caracteristicas": [
+      "Lamina protectora de Hidrogel",
+      "Antiespia protege tu privacidad de vistas no deseadas",
+      "Compatibilidad con muchos dispositivos"
+    ]
+  },
+  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
