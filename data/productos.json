@@ -1,5 +1,23 @@
 [
   {
+    "id": "Servicios_03",
+    "nombre": "Lamina de Hidrogel Matte",
+    "imagenes": [
+      "img/productos/servicios-03/1.webp",
+      "img/productos/servicios-03/2.webp"
+    ],
+    "categoria": "Servicios",
+    "precio": 9990,
+    "novedad": false,
+    "promocion": true,
+    "promoTexto": "-20%",
+    "descripcion": "Lamina de Hidrogel Matte, perfecto para mantener la apariencia de tu teléfono, no quedan huellas en la pantalla",
+    "caracteristicas": [
+      "Lamina de Hidrogel que no mantiene huellas dactilares",
+      "Protección contra caídas y golpes"
+    ]
+  },
+  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
