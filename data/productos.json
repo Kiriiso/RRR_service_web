@@ -1,23 +1,5 @@
 [
   {
-    "id": "Servicios_03",
-    "nombre": "Lamina de Hidrogel Matte",
-    "imagenes": [
-      "img/productos/servicios-03/1.webp",
-      "img/productos/servicios-03/2.webp"
-    ],
-    "categoria": "Servicios",
-    "precio": 9990,
-    "novedad": false,
-    "promocion": true,
-    "promoTexto": "-20%",
-    "descripcion": "Lamina de Hidrogel Matte, perfecto para mantener la apariencia de tu teléfono, no quedan huellas en la pantalla",
-    "caracteristicas": [
-      "Lamina de Hidrogel que no mantiene huellas dactilares",
-      "Protección contra caídas y golpes"
-    ]
-  },
-  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
@@ -81,6 +63,26 @@
     ]
   },
   {
+    "id": "Servicios_01",
+    "nombre": "Lamina Hidrogel de Alta Proteccion",
+    "imagenes": [
+      "img/productos/servicios-01/2.webp",
+      "img/productos/servicios-01/3.webp",
+      "img/productos/servicios-01/1.webp"
+    ],
+    "categoria": "Servicios",
+    "precio": 4990,
+    "novedad": false,
+    "promocion": true,
+    "promoTexto": "-20%",
+    "descripcion": "lamina hidrogel",
+    "caracteristicas": [
+      "Lamina protectora de Hidrogel",
+      "Antiespia protege tu privacidad de vistas no deseadas",
+      "Compatibilidad con muchos dispositivos"
+    ]
+  },
+  {
     "id": "Servicios_02",
     "nombre": "Lamina de Hidrogel Antiespia",
     "imagenes": [
@@ -100,23 +102,21 @@
     ]
   },
   {
-    "id": "Servicios_01",
-    "nombre": "Lamina Hidrogel de Alta Proteccion",
+    "id": "Servicios_03",
+    "nombre": "Lamina de Hidrogel Matte",
     "imagenes": [
-      "img/productos/servicios-01/2.webp",
-      "img/productos/servicios-01/3.webp",
-      "img/productos/servicios-01/1.webp"
+      "img/productos/servicios-03/1.webp",
+      "img/productos/servicios-03/2.webp"
     ],
     "categoria": "Servicios",
-    "precio": 4990,
+    "precio": 9990,
     "novedad": false,
     "promocion": true,
     "promoTexto": "-20%",
-    "descripcion": "lamina hidrogel",
+    "descripcion": "Lamina de Hidrogel Matte, perfecto para mantener la apariencia de tu teléfono, no quedan huellas en la pantalla",
     "caracteristicas": [
-      "Lamina protectora de Hidrogel",
-      "Antiespia protege tu privacidad de vistas no deseadas",
-      "Compatibilidad con muchos dispositivos"
+      "Lamina de Hidrogel que no mantiene huellas dactilares",
+      "Protección contra caídas y golpes"
     ]
   },
   {
