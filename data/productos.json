@@ -64,8 +64,10 @@
   },
   {
     "id": "Servicios_01",
-    "nombre": "Lamina hidrogel",
+    "nombre": "Lamina Hidrogel de Alta Proteccion",
     "imagenes": [
+      "img/productos/servicios-01/2.webp",
+      "img/productos/servicios-01/3.webp",
       "img/productos/servicios-01/1.webp"
     ],
     "categoria": "Servicios",
@@ -75,7 +77,46 @@
     "promoTexto": "-20%",
     "descripcion": "lamina hidrogel",
     "caracteristicas": [
-      "protege"
+      "Lamina protectora de Hidrogel",
+      "Antiespia protege tu privacidad de vistas no deseadas",
+      "Compatibilidad con muchos dispositivos"
+    ]
+  },
+  {
+    "id": "Servicios_02",
+    "nombre": "Lamina de Hidrogel Antiespia",
+    "imagenes": [
+      "img/productos/servicios-02/1.webp",
+      "img/productos/servicios-02/2.webp"
+    ],
+    "categoria": "Servicios",
+    "precio": 9990,
+    "novedad": false,
+    "promocion": true,
+    "promoTexto": "-20%",
+    "descripcion": "Lamina protectora para tu telefono antiespia, resguarda tu privacidad",
+    "caracteristicas": [
+      "Lamina protectora de Hidrogel",
+      "Antiespia protege tu privacidad de vistas no deseadas",
+      "Compatibilidad con muchos dispositivos"
+    ]
+  },
+  {
+    "id": "Servicios_03",
+    "nombre": "Lamina de Hidrogel Matte",
+    "imagenes": [
+      "img/productos/servicios-03/1.webp",
+      "img/productos/servicios-03/2.webp"
+    ],
+    "categoria": "Servicios",
+    "precio": 9990,
+    "novedad": false,
+    "promocion": true,
+    "promoTexto": "-20%",
+    "descripcion": "Lamina de Hidrogel Matte, perfecto para mantener la apariencia de tu teléfono, no quedan huellas en la pantalla",
+    "caracteristicas": [
+      "Lamina de Hidrogel que no mantiene huellas dactilares",
+      "Protección contra caídas y golpes"
     ]
   },
   {
@@ -100,6 +141,24 @@
       "img/Audifonos/warhead/warhead_blue_informativo.webp",
       "img/Audifonos/warhead/warhead_blue_lateral.webp",
       "img/Audifonos/warhead/warhead_blue_principal.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 24990,
+    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
+    "caracteristicas": [
+      "Sonido envolvente 7.1, ideal para juegos y películas.",
+      "Micrófono de alta calidad para llamadas y streaming.",
+      "Diseño ergonómico para un uso prolongado sin incomodidad."
+    ],
+    "novedad": false
+  },
+  {
+    "id": "Auriculares_02",
+    "nombre": "Gaming Headphone Warhead - Red Edition",
+    "imagenes": [
+      "img/Audifonos/warhead/warhead_red_informativo.webp",
+      "img/Audifonos/warhead/warhead_red_principal.webp",
+      "img/Audifonos/warhead/warhead_red_lateral.webp"
     ],
     "categoria": "Auriculares",
     "precio": 24990,
@@ -235,23 +294,5 @@
       "Entrada para Micro-USB y USB-C",
       "Salida de USB-A (x2) y USB-C"
     ]
-  },
-  {
-    "id": "Auriculares_02",
-    "nombre": "Gaming Headphone Warhead - Red Edition",
-    "imagenes": [
-      "img/Audifonos/warhead/warhead_red_informativo.webp",
-      "img/Audifonos/warhead/warhead_red_principal.webp",
-      "img/Audifonos/warhead/warhead_red_lateral.webp"
-    ],
-    "categoria": "Auriculares",
-    "precio": 24990,
-    "descripcion": "Audífonos gaming Warhead con sonido envolvente y micrófono de alta calidad.",
-    "caracteristicas": [
-      "Sonido envolvente 7.1, ideal para juegos y películas.",
-      "Micrófono de alta calidad para llamadas y streaming.",
-      "Diseño ergonómico para un uso prolongado sin incomodidad."
-    ],
-    "novedad": false
   }
 ]
