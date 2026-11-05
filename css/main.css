@@ -94,7 +94,7 @@ header.top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height
 .estado.cerrado i{background:var(--r)}
 
 /* Tarjeta "Orden de trabajo" (hero y página 404) */
-.orden{background:var(--bench);border:1px solid var(--line);border-radius:20px;padding:1.5rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);transform:rotate(1.6deg)}
+.orden{background:var(--bench);border:1px solid var(--line);border-radius:20px;padding:1.5rem;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
 .orden-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px dashed var(--line);margin-bottom:1.1rem}
 .orden-head strong{font:700 1.05rem var(--display)}
 .leds{display:flex;gap:.5rem}
@@ -119,7 +119,7 @@ section.s{padding:5rem 0}
 
 /* Servicios: panel de herramientas, la tarjeta principal es más grande */
 /* Grilla de servicios: 6 columnas (tarjeta normal ocupa 2, la .big ocupa 4) */
-.bench{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.bench{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:1rem}
 .srv{position:relative;grid-column:span 2;display:flex;flex-direction:column;gap:.7rem;padding:1.6rem;border-radius:18px;background:var(--bench);border:1px solid var(--line);overflow:hidden;transition:border-color .25s,transform .25s}
 /* Luz azul que sigue al mouse (la posición la fija js/main.js) */
 .srv::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(77,148,255,.18),transparent 70%);opacity:0;transition:opacity .3s}
@@ -132,8 +132,8 @@ section.s{padding:5rem 0}
 .srv .ask{font-weight:600;color:var(--g);display:inline-flex;gap:.5rem;align-items:center}
 .srv .ask i{transition:transform .2s}
 .srv:hover .ask i{transform:translateX(4px)}
-.srv.big{grid-column:span 4;grid-row:span 1;background:linear-gradient(135deg,var(--bench),#14213a)}
-.srv.big h3{font-size:1.8rem}
+.srv.big{grid-column:span 2}
+
 /* Color del ícono de cada servicio (rojo, azul o verde según su posición) */
 .srv:nth-child(2) .ico{color:var(--b)}.srv:nth-child(3) .ico{color:var(--g)}.srv:nth-child(1) .ico{color:var(--r)}
 .srv:nth-child(4) .ico{color:var(--b)}.srv:nth-child(5) .ico{color:var(--r)}.srv:nth-child(6) .ico{color:var(--g)}
@@ -179,7 +179,6 @@ footer a:hover{color:var(--text)}
   .orden{transform:none}
   .bench{grid-template-columns:repeat(2,1fr)}
   .srv,.srv.big{grid-column:span 1}
-  .srv.big{grid-column:span 2}
   .steps{grid-template-columns:1fr 1fr}
   .steps li::after{display:none}
   .locales,.horario{grid-template-columns:1fr}
@@ -329,3 +328,11 @@ footer a:hover{color:var(--text)}
   .dest-pista{animation:none}
   .dest-grupo[aria-hidden="true"]{display:none}
 }
+
+/* ===== FOTO DE FONDO EN LAS TARJETAS DE SERVICIOS (img/servicios/...) ===== */
+.srv{min-height:250px}
+.srv>*:not(.srv-bg){z-index:2}
+.srv::before{z-index:1}
+.srv>.srv-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.45;transition:opacity .3s,transform .5s}
+.srv:hover>.srv-bg{opacity:.6;transform:scale(1.04)}
+.srv:has(.srv-bg)::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,14,20,.25),rgba(11,14,20,.85))}
