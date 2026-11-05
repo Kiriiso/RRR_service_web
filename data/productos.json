@@ -85,6 +85,8 @@
     "id": "Servicios_01",
     "nombre": "Lamina hidrogel",
     "imagenes": [
+      "img/productos/servicios-01/2.webp",
+      "img/productos/servicios-01/3.webp",
       "img/productos/servicios-01/1.webp"
     ],
     "categoria": "Servicios",
@@ -94,7 +96,9 @@
     "promoTexto": "-20%",
     "descripcion": "lamina hidrogel",
     "caracteristicas": [
-      "protege"
+      "Lamina protectora de Hidrogel",
+      "Antiespia protege tu privacidad de vistas no deseadas",
+      "Compatibilidad con muchos dispositivos"
     ]
   },
   {
