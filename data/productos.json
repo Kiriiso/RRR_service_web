@@ -1,5 +1,25 @@
 [
   {
+    "id": "Teclados_01",
+    "nombre": "Teclado Numérico TecMaster",
+    "imagenes": [
+      "img/productos/teclados-01/1.webp",
+      "img/productos/teclados-01/2.webp",
+      "img/productos/teclados-01/3.webp"
+    ],
+    "categoria": "Teclados",
+    "precio": 14000,
+    "novedad": true,
+    "promocion": false,
+    "promoTexto": "",
+    "descripcion": "Teclado Numérico USB Negro Marca TecMaster.",
+    "caracteristicas": [
+      "Arquitectura semimecánica que proporciona una experiencia de escritura cómoda.",
+      "Conector USB para fácil conexión a dispositivos.",
+      "Diseño compacto, ideal para espacios reducidos."
+    ]
+  },
+  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
