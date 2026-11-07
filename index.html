@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- TÍTULO que se ve en la pestaña y en Google (la descripción va justo debajo) -->
 <title>RRR Servicio Técnico | Reparación de computadores, celulares y consolas en Los Andes</title>
 <meta name="description" content="Servicio técnico en Los Andes: computadores, notebooks, celulares, consolas y Smart TVs. Diagnóstico claro, reparación con garantía y atención por WhatsApp.">
 <meta name="theme-color" content="#0b0e14">
-<!-- SEO: enlace canónico y Open Graph (vista previa al compartir). Si cambias de dominio, actualiza estas URLs -->
 <link rel="canonical" href="https://serviciotecnicorrr.cl/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CL">
@@ -17,7 +15,6 @@
 <meta property="og:url" content="https://serviciotecnicorrr.cl/">
 <meta property="og:image" content="https://serviciotecnicorrr.cl/img/logorrr.png">
 <meta name="twitter:card" content="summary">
-<!-- SEO LOCAL: datos para Google (nombre, dirección, teléfono y horario de cada local). Mantenlos iguales a los de la página -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -37,7 +34,8 @@
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Esmeralda 498, local 7",
+        "streetAddress": "Esmeralda 498, Local 7",
+        "postalCode": "2100000",
         "addressLocality": "Los Andes",
         "addressRegion": "Valparaíso",
         "addressCountry": "CL"
@@ -57,7 +55,8 @@
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Membrillar 351, local 1",
+        "streetAddress": "Membrillar 351, Local 1",
+        "postalCode": "2100000",
         "addressLocality": "Los Andes",
         "addressRegion": "Valparaíso",
         "addressCountry": "CL"
@@ -71,21 +70,17 @@
   ]
 }
 </script>
-<!-- Fuentes (Google Fonts) e íconos (Font Awesome) -->
 <link rel="icon" href="/img/favicon.png" sizes="48x48">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Estilos del sitio: colores, tipografías y diseño están en css/main.css -->
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-<!-- PANTALLA DE CARGA: logo que rebota; js/main.js la oculta al terminar de cargar -->
 <div id="pantalla-carga"><img src="/img/logorrr.png" alt="Cargando RRR Servicio Técnico"></div>
 
-<!-- BARRA SUPERIOR: logo y menú. Si agregas una página, añade su enlace aquí y en las demás páginas -->
 <header class="top">
   <div class="wrap nav">
     <a href="index.html" class="brand"><img src="/img/logorrr.png" alt="Logo RRR Servicio Técnico"><span>Servicio Técnico <span class="rgb-text">RRR</span></span></a>
@@ -101,11 +96,9 @@
 </header>
 
 <main>
-  <!-- HERO (portada): título, texto, botones y la tarjeta animada de orden de trabajo -->
   <section class="hero">
     <div class="wrap">
       <div>
-        <!-- Aviso "Abierto/Cerrado ahora": lo calcula js/main.js con el horario (para cambiar el horario edita js/main.js) -->
         <div class="estado" id="estado"><i></i><span>Revisando horario…</span></div>
         <h1>Tu equipo en manos <span class="rgb-text">que sí lo arreglan</span></h1>
         <p class="lead">Reparamos computadores, celulares, consolas y Smart TVs en Los Andes. Te explicamos qué falla, cuánto cuesta y cuánto demora, antes de tocar nada. Todo con garantía.</p>
@@ -115,7 +108,6 @@
         </div>
       </div>
 
-      <!-- Tarjeta "Orden de trabajo": js/main.js enciende los pasos y las luces uno a uno -->
       <aside class="orden" aria-label="Ejemplo de cómo avanza tu reparación">
         <div class="orden-head"><strong>Orden de trabajo</strong>
           <div class="leds" aria-hidden="true"><span class="led r"></span><span class="led b"></span><span class="led g"></span></div>
@@ -131,8 +123,6 @@
     </div>
   </section>
 
-  <!-- SERVICIOS: para agregar uno, copia un <article class="srv"> completo y cambia ícono, título, texto y mensaje de WhatsApp -->
-  <!-- NOVEDADES Y PROMOCIONES: carrusel automático (js/destacados.js lo llena desde data/productos.json) -->
   <section class="destacados" id="destacados" hidden>
     <div class="wrap">
       <h2>Novedades y <span class="rgb-text">promociones</span></h2>
@@ -147,7 +137,6 @@
         <p>Escríbenos por WhatsApp con el modelo y el problema, y te respondemos con los siguientes pasos.</p>
       </div>
       <div class="bench">
-        <!-- Tarjeta destacada (más ancha). Las demás son <article class="srv"> -->
         <article class="srv big">
           <img class="srv-bg" src="img/servicios/computadores.jpg" alt="" loading="lazy" onerror="this.remove()"><div class="ico"><i class="fas fa-desktop"></i></div>
           <h3>COMPUTADORES Y NOTEBOOKS</h3>
@@ -188,7 +177,6 @@
     </div>
   </section>
 
-  <!-- CÓMO TRABAJAMOS: 4 pasos (los números salen del CSS). Revisa que el texto refleje cómo trabajan de verdad -->
   <section class="s how">
     <div class="wrap">
       <div class="s-head"><h2>Así trabajamos</h2></div>
@@ -201,7 +189,6 @@
     </div>
   </section>
 
-  <!-- COTIZACIÓN: el formulario arma un mensaje y abre WhatsApp con los datos ya escritos (lógica en js/main.js, no se guarda nada) -->
   <section class="s how" id="cotizar">
     <div class="wrap">
       <div class="s-head"><h2>Cotiza tu reparación</h2><p>Cuéntanos qué le pasa a tu equipo y te respondemos por WhatsApp con el mensaje ya armado.</p></div>
@@ -223,27 +210,28 @@
     </div>
   </section>
 
-  <!-- LOCALES Y HORARIO (el ancla #contacto es el enlace "Contacto" del menú) -->
   <section class="s" id="contacto">
     <div class="wrap">
       <div class="s-head"><h2>Dónde encontrarnos</h2><p>Dos locales en Los Andes.</p></div>
       <div class="locales">
-        <div class="local"><h3>Galería Paseo Colonial</h3><p>Calle Esmeralda 498, local 7, Los Andes</p>
-          <iframe class="mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Paseo Colonial" src="https://www.google.com/maps?q=Esmeralda%20498%2C%20Los%20Andes%2C%20Chile&output=embed"></iframe>
-          <a href="https://www.google.com/maps/search/?api=1&query=Galer%C3%ADa+Paseo+Colonial+Esmeralda+498+Los+Andes" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-dot"></i> Cómo llegar</a></div>
-        <div class="local"><h3>Galería Express Membrillar</h3><p>Membrillar 351, local 1, Los Andes</p>
-          <iframe class="mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Express Membrillar" src="https://www.google.com/maps?q=Membrillar%20351%2C%20Los%20Andes%2C%20Chile&output=embed"></iframe>
-          <a href="https://www.google.com/maps/search/?api=1&query=Galer%C3%ADa+Express+Membrillar+351+Los+Andes" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-dot"></i> Cómo llegar</a></div>
+        <div class="local"><h3>Galería Paseo Colonial</h3><p>Esmeralda 498, Local 7, 2100000 Los Andes, Valparaíso</p>
+          <iframe class="mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Galería Paseo Colonial" src="https://www.google.com/maps?q=Galer%C3%ADa%20Paseo%20Colonial%2C%20Esmeralda%20498%2C%20Los%20Andes%2C%20Valpara%C3%ADso&output=embed"></iframe>
+          <a href="https://maps.app.goo.gl/3EHoRgW2bTBpom5f9" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-dot"></i> Cómo llegar</a></div>
+        <div class="local"><h3>Galería Express</h3><p>Membrillar 351, Local 1, 2100000 Los Andes, Valparaíso</p>
+          <iframe class="mapa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Galería Express" src="https://www.google.com/maps?q=Galer%C3%ADa%20Express%2C%20Membrillar%20351%2C%20Los%20Andes%2C%20Valpara%C3%ADso&output=embed"></iframe>
+          <a href="https://maps.app.goo.gl/NhSMveDBy6dRZAW28" target="_blank" rel="noopener noreferrer"><i class="fas fa-location-dot"></i> Cómo llegar</a></div>
       </div>
       <div class="horario">
-        <div><b>Lunes a viernes</b><span>10:00 a 20:00</span></div>
-        <div><b>Sábados</b><span>10:00 a 19:00</span></div>
-        <div><b>Domingos</b><span>Cerrado</span></div>
+        <h3>Horarios</h3>
+        <div class="horario-lista">
+          <div><b>Lunes a viernes</b><span>10:00 a 20:00</span></div>
+          <div><b>Sábados</b><span>10:00 a 19:00</span></div>
+          <div><b>Domingos</b><span>Cerrado</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- LLAMADA FINAL a WhatsApp -->
   <section class="cta">
     <div class="wrap">
       <h2>¿Tu equipo falló? <span class="rgb-text">Escríbenos ahora</span></h2>
@@ -252,22 +240,19 @@
   </section>
 </main>
 
-<!-- PIE DE PÁGINA: derechos, teléfonos e Instagram -->
 <footer>
   <div class="wrap">
     <span>&copy; <span id="anio">2026</span> Servicio Técnico RRR. Todos los derechos reservados.</span>
     <span>
       <a href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 7553 0368</a> ·
       <a href="https://wa.me/56928692686?text=Hola,%20necesito%20un%20servicio%20técnico">+56 9 2869 2686</a> ·
-      <a href="https://www.instagram.com/rrrserviciotecnico" target="_blank" rel="noopener noreferrer" aria-label="Instagram de RRR Servicio Técnico"><i class="fab fa-instagram"></i> @rrrserviciotecnico</a>
+      <a href="https://www.instagram.com/rrrserviciotecnico" target="_blank" rel="noopener noreferrer" aria-label="Instagram de RRR Servicio Técnico"><i class="fab fa-instagram"></i> rrrserviciotecnico</a>
     </span>
   </div>
 </footer>
 
-<!-- BOTÓN FLOTANTE DE WHATSAPP: el número va en la dirección wa.me/56975530368 (formato 56 + número, sin + ni espacios) -->
 <a class="wa-float" href="https://wa.me/56975530368?text=Hola,%20necesito%20un%20servicio%20técnico" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-<!-- SCRIPT compartido (menú móvil, animaciones, carga, abierto/cerrado) -->
 <script src="js/main.js" defer></script>
 <script src="js/destacados.js" defer></script>
 </body>

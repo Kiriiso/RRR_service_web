@@ -1,38 +1,27 @@
-/* =====================================================================
-   js/catalogo.js · Lógica de catalogo.html
-   Flujo: carga data/productos.json -> aplica los filtros -> dibuja tarjetas.
-   Filtros: buscador por nombre, categoría, precio mín/máx, Novedades, orden.
-   Los filtros quedan guardados en la dirección (?q=...&cat=...&nuevo=1).
-   ===================================================================== */
-// Atajo para buscar un elemento por su id
 const $ = id => document.getElementById(id);
 const grid = $('catalogo'), cats = $('cats'), cuenta = $('cuenta'), limpiar = $('limpiar');
-// Escapa caracteres especiales para insertar texto en HTML sin riesgos
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-// Normaliza texto (sin tildes, minúsculas) para buscar sin importar acentos
 const norm = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-// Convierte el precio a número (acepta 9990 o "$9.990")
 const num = v => typeof v === 'number' ? v : parseInt(String(v).replace(/\D/g, ''), 10) || 0;
-// Formatea el precio en pesos chilenos
 const clp = n => typeof n === 'string' ? n : new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(n);
-// Un producto es novedad si en el JSON tiene "novedad": true
 const esNovedad = p => p.novedad === true || p.novedad === 'true';
-
-// Un producto está en promoción si tiene "promocion": true (el texto corto va en "promoTexto", ej. 2x1)
 const esPromo = p => p.promocion === true || p.promocion === 'true';
+const precioHTML = p => {
+  const ant = num(p.precioOriginal);
+  return esPromo(p) && ant > num(p.precio)
+    ? `<s class="precio-ant" style="opacity:.6;font-size:.8em;margin-right:.4em">${esc(clp(ant))}</s>${esc(clp(p.precio))}`
+    : esc(clp(p.precio));
+};
 
-// Estado: productos cargados y filtros actuales (base = valores por defecto)
 let productos = [];
 const base = { q: '', cat: 'Todos', min: '', max: '', nuevo: false, promo: false, orden: 'relevancia' };
 const estado = { ...base };
 
-// Leer filtros desde la URL (para poder compartir o volver desde producto.html)
 const u = new URLSearchParams(location.search);
 estado.q = u.get('q') ?? ''; estado.cat = u.get('cat') ?? 'Todos';
 estado.min = u.get('min') ?? ''; estado.max = u.get('max') ?? '';
 estado.nuevo = u.get('nuevo') === '1'; estado.promo = u.get('promo') === '1'; estado.orden = u.get('orden') ?? 'relevancia';
 
-// Devuelve solo los productos que cumplen TODOS los filtros activos, ya ordenados
 function filtrar() {
   const q = norm(estado.q);
   const min = estado.min === '' ? 0 : +estado.min;
@@ -46,13 +35,11 @@ function filtrar() {
       && (!estado.promo || esPromo(p));
   });
   if (estado.orden === 'asc') lista.sort((a, b) => num(a.precio) - num(b.precio));
-  if (estado.orden === 'desc') lista.sort((a, b) => num(b.precio) - num(a.precio));
-  // Las novedades siempre salen primero (el sort es estable: se mantiene el orden dentro de cada grupo)
-  lista.sort((a, b) => esNovedad(b) - esNovedad(a));
+  else if (estado.orden === 'desc') lista.sort((a, b) => num(b.precio) - num(a.precio));
+  else lista.sort((a, b) => esNovedad(b) - esNovedad(a));
   return lista;
 }
 
-// Dibuja las tarjetas, actualiza contador/botones y guarda los filtros en la URL. Para cambiar el número de WhatsApp edita el enlace wa.me de la plantilla
 function pintar() {
   const lista = filtrar();
   const activo = JSON.stringify(estado) !== JSON.stringify(base);
@@ -70,7 +57,7 @@ function pintar() {
         <span class="prod-cat">${esc(p.categoria)}</span>
         <h3><a href="producto.html?id=${encodeURIComponent(p.id)}">${esc(p.nombre)}</a></h3>
         <p class="desc">${esc(p.descripcion)}</p>
-        <p class="precio">${esc(clp(p.precio))}</p>
+        <p class="precio">${precioHTML(p)}</p>
         <a class="btn btn-wa" target="_blank" rel="noopener noreferrer"
            href="https://wa.me/56975530368?text=${encodeURIComponent('Hola, me interesa: ' + p.nombre)}">
           <i class="fab fa-whatsapp"></i> Preguntar</a>
@@ -88,12 +75,10 @@ function pintar() {
   history.replaceState(null, '', p.toString() ? '?' + p : location.pathname);
 }
 
-// Copia el estado a los campos del formulario (al cargar o al limpiar)
 function sincronizarControles() {
   $('q').value = estado.q; $('min').value = estado.min; $('max').value = estado.max; $('orden').value = estado.orden;
 }
 
-// Carga los productos y crea los chips de categoría
 fetch('data/productos.json')
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(data => {
@@ -108,7 +93,6 @@ fetch('data/productos.json')
     grid.innerHTML = '<p class="vacio">No pudimos cargar los accesorios. Recarga la página o escríbenos por WhatsApp.</p>';
   });
 
-// EVENTOS: cada control actualiza el estado y vuelve a dibujar (el buscador espera 200ms para no saturar)
 let espera;
 $('q').addEventListener('input', e => { clearTimeout(espera); espera = setTimeout(() => { estado.q = e.target.value; pintar(); }, 200); });
 $('min').addEventListener('input', e => { estado.min = e.target.value; pintar(); });

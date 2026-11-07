@@ -1,9 +1,3 @@
-/* =====================================================================
-   admin/admin.js · Panel para agregar, editar, ordenar y borrar productos
-   Lee data/productos.json del repositorio de GitHub, lo modifica
-   y publica JSON + fotos en UN solo commit usando la API de GitHub.
-   ===================================================================== */
-
 const CFG = {
   owner: 'kiriiso',
   repo: 'RRR_service_web',
@@ -12,7 +6,6 @@ const CFG = {
   anchoMax: 1200
 };
 
-// ===== UTILIDADES =====
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const sinTildes = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -29,7 +22,7 @@ let rama = '';
 let productos = [];
 let editando = null;
 let fotos = [];
-let ordenSucio = false; // hay cambios de orden sin publicar
+let ordenSucio = false;
 
 function aviso(msg, tipo = 'ok') {
   const t = $('toast'); t.textContent = msg; t.className = 'toast ' + tipo; t.hidden = false;
@@ -43,7 +36,6 @@ const explicar = e =>
   e.status === 409 || e.status === 422 ? 'Hubo un conflicto al publicar. Intenta de nuevo.' :
   'No se pudo completar. Revisa tu conexión a internet.';
 
-// ===== API DE GITHUB =====
 async function api(ruta, op = {}) {
   const r = await fetch(`https://api.github.com/repos/${CFG.owner}/${CFG.repo}${ruta}`, {
     cache: 'no-store', ...op,
@@ -68,7 +60,6 @@ async function publicar(mensaje, archivos) {
   await post(`/git/refs/heads/${rama}`, { sha: nuevo.sha }, 'PATCH');
 }
 
-// Aplica un cambio sobre la lista MÁS RECIENTE del repositorio y lo publica.
 async function modificar(fn, mensaje) {
   try {
     const lista = await cargarLista(), archivos = [];
@@ -81,7 +72,6 @@ async function modificar(fn, mensaje) {
   } catch (e) { aviso(explicar(e), 'error'); return false; }
 }
 
-// ===== INICIO Y SESIÓN =====
 async function iniciar() {
   if (!token) return mostrar('conectar');
   try {
@@ -96,17 +86,23 @@ $('guardar-token').addEventListener('click', () => {
 });
 $('salir').addEventListener('click', () => { localStorage.removeItem('rrr_token'); token = ''; mostrar('conectar'); });
 
-// ===== LISTA DE PRODUCTOS =====
+function precioLista(p) {
+  const ant = num(p.precioOriginal);
+  return esPromo(p) && ant > num(p.precio)
+    ? `<s>${esc(clp(ant))}</s> ${esc(clp(p.precio))}`
+    : esc(clp(p.precio));
+}
+
 function pintarLista() {
   const q = sinTildes($('buscar').value).toLowerCase();
   const items = productos.filter(p => !q || sinTildes(p.nombre + ' ' + p.categoria).toLowerCase().includes(q));
-  const ordenable = !q; // con búsqueda activa no se puede ordenar
+  const ordenable = !q;
   $('lista').innerHTML = items.map((p, i) => `
     <article class="fila" data-id="${esc(p.id)}" ${ordenable ? 'draggable="true"' : ''}>
       ${ordenable ? '<span class="asa" title="Arrastra para mover">⠿</span>' : ''}
       <img src="../${esc(p.imagenes?.[0])}" alt="">
       <div class="fila-info"><strong>${esc(p.nombre)}</strong>
-        <span>${esc(p.categoria)} · ${esc(clp(p.precio))}${esNov(p) ? ' · <b class="nov">Novedad</b>' : ''}${esPromo(p) ? ` · <b class="promo">${esc(p.promoTexto || 'Promoción')}</b>` : ''}</span></div>
+        <span>${esc(p.categoria)} · ${precioLista(p)}${esNov(p) ? ' · <b class="nov">Novedad</b>' : ''}${esPromo(p) ? ` · <b class="promo">${esc(p.promoTexto || 'Promoción')}</b>` : ''}</span></div>
       <div class="fila-acc">
         ${ordenable ? `
         <button class="mini-btn" data-acc="top" title="Mover al principio" ${i === 0 ? 'disabled' : ''}>⤒</button>
@@ -142,7 +138,6 @@ $('lista').addEventListener('click', e => {
     modificar(l => l.filter(x => x.id !== id), `Panel: eliminar ${id}`);
 });
 
-// Arrastrar y soltar para ordenar
 let arrastrando = null;
 $('lista').addEventListener('dragstart', e => {
   const f = e.target.closest('.fila'); if (!f) return;
@@ -156,13 +151,12 @@ $('lista').addEventListener('drop', e => {
   moverA(arrastrando, productos.findIndex(x => x.id === f.dataset.id));
 });
 
-// Guardar o descartar el nuevo orden
 $('guardar-orden').addEventListener('click', async () => {
   const ids = productos.map(p => p.id);
   const ok = await modificar(lista => {
     const mapa = new Map(lista.map(p => [p.id, p]));
     const ordenados = ids.filter(id => mapa.has(id)).map(id => mapa.get(id));
-    const resto = lista.filter(p => !ids.includes(p.id)); // por si alguien agregó algo mientras tanto
+    const resto = lista.filter(p => !ids.includes(p.id));
     return [...resto, ...ordenados];
   }, 'Panel: cambiar orden de productos');
   if (ok) { ordenSucio = false; $('barra-orden').hidden = true; }
@@ -172,7 +166,6 @@ $('descartar-orden').addEventListener('click', async () => {
   ordenSucio = false; $('barra-orden').hidden = true; pintarLista();
 });
 
-// ===== FORMULARIO =====
 function abrirEditor(p) {
   editando = p ? p.id : null;
   $('titulo-ed').textContent = p ? 'Editar producto' : 'Nuevo producto';
@@ -183,12 +176,14 @@ function abrirEditor(p) {
   $('f-nombre').value = p?.nombre ?? ''; $('f-desc').value = p?.descripcion ?? '';
   $('f-carac').value = (p?.caracteristicas ?? []).join('\n');
   $('f-precio').value = p ? num(p.precio) : ''; $('f-novedad').checked = p ? esNov(p) : false;
-  $('f-promo').checked = p ? esPromo(p) : false; $('f-promo-txt').value = p?.promoTexto ?? ''; $('f-promo-txt').disabled = !$('f-promo').checked;
+  $('f-promo').checked = p ? esPromo(p) : false; $('f-promo-txt').value = p?.promoTexto ?? '';
+  $('f-precio-orig').value = p && num(p.precioOriginal) ? num(p.precioOriginal) : '';
+  $('f-promo-txt').disabled = $('f-precio-orig').disabled = !$('f-promo').checked;
   fotos = (p?.imagenes ?? []).map(path => ({ path, url: '../' + path }));
   pintarFotos(); mostrar('editor');
 }
 $('nuevo').addEventListener('click', () => { if (!bloqueado()) abrirEditor(null); });
-$('f-promo').addEventListener('change', e => { $('f-promo-txt').disabled = !e.target.checked; });
+$('f-promo').addEventListener('change', e => { $('f-promo-txt').disabled = $('f-precio-orig').disabled = !e.target.checked; });
 $('cancelar').addEventListener('click', () => mostrar('app'));
 $('categoria').addEventListener('change', e => { $('cat-nueva').disabled = e.target.value !== '__nueva'; });
 
@@ -230,12 +225,13 @@ function nuevoId(lista, cat) {
   return `${pre}_${String(Math.max(0, ...usados) + 1).padStart(2, '0')}`;
 }
 
-// ===== PUBLICAR (crear o editar) =====
 $('form').addEventListener('submit', async e => {
   e.preventDefault();
   const nombre = $('f-nombre').value.trim(), precio = parseInt($('f-precio').value, 10);
   const cat = $('categoria').value === '__nueva' ? $('cat-nueva').value.trim() : $('categoria').value;
+  const promo = $('f-promo').checked, original = parseInt($('f-precio-orig').value, 10);
   if (!nombre || !cat || !(precio > 0) || !fotos.length) return aviso('Completa nombre, tipo, precio y al menos una foto.', 'error');
+  if (promo && original && original <= precio) return aviso('El precio original debe ser mayor al precio de promoción.', 'error');
   const btn = $('guardar'); btn.disabled = true; btn.textContent = 'Publicando…';
 
   const ok = await modificar(async (lista, archivos) => {
@@ -250,9 +246,9 @@ $('form').addEventListener('submit', async e => {
       archivos.push({ path, base64: await blobB64(f.blob) });
     }
     const prod = { ...previo, id, nombre, imagenes, categoria: cat, precio, novedad: $('f-novedad').checked,
-      promocion: $('f-promo').checked, promoTexto: $('f-promo').checked ? $('f-promo-txt').value.trim() : '',
+      promocion: promo, promoTexto: promo ? $('f-promo-txt').value.trim() : '',
+      precioOriginal: promo && original > 0 ? original : undefined,
       descripcion: $('f-desc').value.trim(), caracteristicas: $('f-carac').value.split('\n').map(s => s.trim()).filter(Boolean) };
-    // Productos nuevos al principio. Para ponerlos al final: [...lista, prod]
     return previo ? lista.map(x => x.id === id ? prod : x) : [prod, ...lista];
   }, `Panel: ${editando ? 'editar' : 'agregar'} ${nombre}`);
 
