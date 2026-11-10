@@ -1,5 +1,26 @@
 [
   {
+    "id": "Celulares_01",
+    "nombre": "Celular ZTE blade v70 máx",
+    "imagenes": [
+      "img/productos/celulares-01/1.webp",
+      "img/productos/celulares-01/2.webp",
+      "img/productos/celulares-01/3.webp",
+      "img/productos/celulares-01/4.webp"
+    ],
+    "categoria": "Celulares",
+    "precio": 99990,
+    "novedad": true,
+    "promocion": false,
+    "promoTexto": "",
+    "descripcion": "SmartPhone ZTE blade, dispositivo gamma alta confiable para tu día a día",
+    "caracteristicas": [
+      "16 GB de RAM",
+      "Camara 50MP IA",
+      "Bateria de 5200 mAh"
+    ]
+  },
+  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
