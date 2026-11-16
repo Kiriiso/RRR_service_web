@@ -1,5 +1,26 @@
 [
   {
+    "id": "Auriculares_06",
+    "nombre": "Auriculares hoco EW201 Bluetooth - Morado",
+    "imagenes": [
+      "img/productos/auriculares-06/1.webp",
+      "img/productos/auriculares-06/2.webp",
+      "img/productos/auriculares-06/3.webp"
+    ],
+    "categoria": "Auriculares",
+    "precio": 19990,
+    "novedad": false,
+    "promocion": false,
+    "promoTexto": "",
+    "descripcion": "Auriculares inalámbricos de tipo in-ear sin almohadillas, con un diseño compacto, ligero y controles táctiles",
+    "caracteristicas": [
+      "Conectividad Bluetooth 5.4 emparejamiento automático al sacarlos del estuche.",
+      "Autonomia Alrededor de 4 horas de reproducción de música o llamadas.",
+      "Bateria 30 mAh en cada auricular y 320 mAh en el estuche de carga.",
+      "Control táctil inteligente (cambiar canciones, reproducir/pausar)"
+    ]
+  },
+  {
     "id": "CoolingPad_01",
     "nombre": "Cooling Pad - Gamer (Azul)",
     "imagenes": [
